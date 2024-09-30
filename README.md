@@ -1,178 +1,40 @@
-# Hack Club Theme Starter
+# hcb-engr site
 
-A sample [Next.js] project for getting started with [MDX], [Theme UI], & [Hack Club Theme].
+Work-in-progress HCB engineering blog
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fhackclub%2Ftheme-starter&repo-name=theme-project)
+## Modifying content
 
-[next.js]: https://nextjs.org
-[mdx]: https://mdxjs.com
-[theme ui]: https://theme-ui.com
-[hack club theme]: https://github.com/hackclub/theme
+All content (posts and authors) can be found in the `/content` directory.
 
-## Usage
+### Posts
 
-1. Import this repo to your coding environment of choice. Download it, `git clone`, or use the GitHub import on Glitch/Repl.it.
-2. `yarn` to install dependencies.
-3. `yarn dev` to start your server.
-4. Start adding your own pages & components in their respective directories.
+Follow the following steps to create a new post:
 
-## Configuration
+1. Create a new directory in `/content/posts` with the name of the post. (use kebab-case)
+2. Create a new file in the directory called `post.mdx`.
+3. Add the following frontmatter to the file:
 
-### Theme switcher
+```mdx
+import Post from '@/components/Post.js'
 
-We’ve included an example theme switcher component at `components/color-switcher.js`,
-which is included on every page through its inclusion in `pages/_app.js`.
-Feel free to change it.
+export const meta = {
+    title: "My New Post",
+    id: "my-new-post", // make sure this matches the directory name
+    category: "new" // one of "new", "newsletter", "improvement"
+} 
 
-### Hack Club fonts
-
-If you’re making a Hack Club HQ project, you’re allowed to use Hack Club’s font,
-[Phantom Sans](https://www.futurefonts.xyz/phantom-foundry/phantom-sans).
-To load it, simply uncomment the `import '@hackclub/theme/fonts/reg-bold.css'`
-line in `_app.js`.
-
-### Custom theme
-
-By default, the raw [Hack Club Theme](https://theme.hackclub.com) will be used.
-If you’d like to edit the theme, we recommend making a theme file (perhaps at
-`lib/theme.js`) along these lines:
-
+<Post meta={meta}>
+    # Post content goes here
+    Using either markdown or JSX
+</Post>
+```
+4. Reference the new post in `/content/posts/posts.js` (this adds it to the website)
 ```js
-import base from '@hackclub/theme'
-
-const theme = base
-
-// theme.fontSizes = […]
-// theme.fonts.heading = ''
-
-export default theme
+export * as z from './my-new-post/post.mdx'
 ```
 
-### Running at another port
+Then you're done!
 
-Super easy: `yarn dev -p 5000`
+### `/lib/authors.js`
 
-### Adding meta tags
-
-These template includes [@hackclub/meta](https://github.com/hackclub/theme/tree/main/packages/meta)
-for adding meta tags to Hack Club HQ sites. To set default meta tags across all pages,
-add the following to `pages/_app.js`:
-
-```js
-// import Head from 'next/head'
-// import Meta from '@hackclub/meta'
-
-<Meta
-  as={Head}
-  name="Hack Club" // site name
-  title="Hackathons" // page title
-  description="List of upcoming high school hackathons" // page description
-  image="https://hackathons.hackclub.com/card.png" // large summary card image URL
-  color="#ec3750" // theme color
-  manifest="/site.webmanifest" // link to site manifest
-/>
-```
-
-If you’re not making a site for HQ, don’t use `@hackclub/meta`, since it adds
-Hack Club’s favicons & info. Instead, we recommend making your own component,
-perhaps at `components/meta.js`.
-
-<details>
-
-<summary>Example code</summary>
-
-```js
-import Head from 'next/head'
-import theme from '@hackclub/theme' // or '../lib/theme'
-
-export default ({
-  name = 'Your Company',
-  title = 'Your Project',
-  description = '',
-  image = 'https://yourproject.vercel.app/card.png',
-  url = 'https://yourproject.vercel.app/'
-}) => (
-  <Head>
-    <title>{title}</title>
-    <meta property="og:title" content={title} />
-    <meta name="twitter:title" content={title} />
-    <meta name="og:url" content={url} />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content={name} />
-    <meta name="description" content={description} />
-    <meta property="og:description" content={description} />
-    <meta name="twitter:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content={image} />
-    <meta name="msapplication-TileColor" content={theme.colors.primary} />
-    <meta name="theme-color" content={theme.colors.primary} />
-  </Head>
-)
-```
-
-</details>
-
-### Adding analytics
-
-Hack Club HQ uses (& loves) [Fathom Analytics](https://usefathom.com/ref/NXBJA2)
-for simple, privacy-focused analytics. ([Check out our site’s analytics here.](https://app.usefathom.com/share/ogimjefa/hackclub.com))
-
-To add Fathom to your project, `yarn add fathom-client`, then you’ll need to
-load it appropriately in `pages/_app.js`. The script is located at
-<https://aardvark.hackclub.com/script.js>.
-
-<details>
-
-<summary>Example file with Fathom</summary>
-
-```js
-import React, { useEffect } from 'react'
-import { useRouter } from 'next/router'
-import NextApp from 'next/app'
-import Head from 'next/head'
-
-import Meta from '@hackclub/meta'
-import '@hackclub/theme/fonts/reg-bold.css'
-import theme from '../lib/theme'
-import { ThemeProvider } from 'theme-ui'
-import * as Fathom from 'fathom-client'
-
-const App = ({ Component, pageProps }) => {
-  const router = useRouter()
-
-  useEffect(() => {
-    Fathom.load('YOURCODE', {
-      includedDomains: ['hackclub.com'],
-      url: 'https://aardvark.hackclub.com/script.js'
-    })
-    const onRouteChangeComplete = () => Fathom.trackPageview()
-    router.events.on('routeChangeComplete', onRouteChangeComplete)
-    return () => {
-      router.events.off('routeChangeComplete', onRouteChangeComplete)
-    }
-  }, [])
-
-  return (
-    <ThemeProvider theme={theme}>
-      <Meta as={Head} />
-      <Component {...pageProps} />
-    </ThemeProvider>
-  )
-}
-
-export default App
-```
-
-</details>
-
-## Deployment
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?s=https%3A%2F%2Fgithub.com%2Fhackclub%2Ftheme-starter&repo-name=theme-project)
-
-We recommend using [Vercel](https://vercel.com) for deployment. It requires no
-configuration, is totally free for personal projects, and supports all the features
-of Next.js with the best performance. Refer to [their documentation](https://vercel.com/docs#deploy-an-existing-project)
-for more details.
-
-You can also deploy your site to [Netlify](https://netlify.com), which is also free. Refer to [their documentation](https://docs.netlify.com/configure-builds/common-configurations/#next-js) on the necessary configuration.
+This file contains all of the authors that can be referenced in posts.

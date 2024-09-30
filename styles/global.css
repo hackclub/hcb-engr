@@ -1,0 +1,22 @@
+.post .post-content img {
+    max-width: 100%;
+    width: auto;
+    max-height: 400px;
+    height: auto;
+}
+
+.post-list .post .post-content:has(.post-preview) > *:not(.post-preview):not(.post-link) {
+    display: none;
+}
+
+.post .post-content .post-link {
+    display: none;
+}
+
+.post-list .post .post-content .post-link {
+    display: block;
+}
+
+:root {
+    scroll-behavior: smooth;
+}
