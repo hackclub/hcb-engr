@@ -11,7 +11,7 @@ function UnstyledLink({ children, ...props }) {
 export default function Header({ concise }) {
     return (
         <Box as="header" sx={{ bg: 'sheet', color: 'text' }} id="top">
-            <Container variant="wide" sx={concise ? { pt: 4, pb: 2 } : { pt: 5, pb: [3, 4] }}>
+            <Container variant="wide" sx={concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center" } : { pt: 5, pb: [3, 4] }}>
 
                 <Box sx={{
                     display: "flex",
@@ -19,7 +19,11 @@ export default function Header({ concise }) {
                     alignItems: "flex-start",
                     flexDirection: "row",
                     mb: 4,
-                    gap: 3
+                    gap: 3,
+                    ...(concise ? {
+                        width: "100%",
+                        maxWidth: "800px",
+                    } : {})
                 }}>
                     <Link href="/">
                         <Image src="https://assets.hackclub.com/hcb-light.svg" alt="HCB Logo" sx={{

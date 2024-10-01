@@ -111,7 +111,7 @@ function PostContent({ children, meta, skipAuthor }) {
     )
 }
 
-function Post({ children, meta, skipAuthor }) {
+export function Post({ children, meta, skipAuthor }) {
 
 
     return (
@@ -121,7 +121,7 @@ function Post({ children, meta, skipAuthor }) {
     );
 }
 
-function Preview ({ children, skipLink }) {
+export function Preview ({ children, skipLink }) {
     const meta = useContext(PostContext);
 
     return (
@@ -137,7 +137,4 @@ function Preview ({ children, skipLink }) {
     );
 }
 
-Post.Preview = Preview;
-
-export { Post };
 export default Post;

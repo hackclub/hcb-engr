@@ -1,4 +1,4 @@
-import { Post, Author } from '@/components/Post.js'
+import { Post, Author, Preview } from '@/components/Post.js'
 import Image from 'next/image'
 
 export const meta = {
@@ -10,8 +10,7 @@ export const meta = {
 };
 
 <Post meta={meta} skipAuthor>
-
-<Post.Preview>
+<Preview>
 
 Welcome to the newly revamped HCB monthly newsletter... we got word your inbox was feeling lonely, so we're here to spice things up!
 
@@ -33,7 +32,7 @@ Need to get some where quickly in HCB? Try hitting <kbd>Ctrl</kbd> / ⌘ + 
 
 From there you can navigate to all of your organizations or search HCB for a specific transaction, card, or reimbursement. Let us know what you think!
 
-</Post.Preview>
+</Preview>
 
 ## 🙏 Allow donors to cover fiscal sponsorship fees.
 
