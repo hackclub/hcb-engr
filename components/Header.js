@@ -83,11 +83,6 @@ export default function Header({ concise }) {
                                     <Link href="https://hackclub.com/hcb">What's HCB? →</Link>
                                 </Heading>
 
-
-                                <Heading as="h3" variant="subheadline" sx={{ color: "muted", m: 0 }}>
-                                    <Link href="https://hcb.hackclub.com">Log in to HCB →</Link>
-                                </Heading>
-
                                 <SignIn />
                             </Box>}
                         </Box>
