@@ -9,6 +9,14 @@
     display: none;
 }
 
+.post-preview {
+    display: none;
+}
+
+.post-list .post-preview {
+    display: block;
+}
+
 .post .post-content .post-link {
     display: none;
 }

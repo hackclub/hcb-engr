@@ -15,5 +15,10 @@ export default {
     dylan: {
         name: "Dylan Wahbe",
         avatar: dylan
+    },
+    manu: {
+        name: "Manu Gurudath",
+        role: "Engineer",
+        avatar: dylan
     }
 }

@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
-import { Badge, Box, Card, Container, Grid, Heading, Link, Text } from "theme-ui"
+import { Badge, Box, Card, Container, Flex, Grid, Heading, Link, Text, useColorMode } from "theme-ui"
 import { authors } from "@/content/index.js"
 import Header from "./Header";
 import Footer from "./Footer";
 import Image from "next/image";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useDisplay } from "@/lib/display";
+import useDocument from "@/lib/useDocument";
 
 const PostContext = createContext();
 
@@ -35,38 +37,36 @@ export function Author({ id, overrideText }) {
     )
 }
 
-function PostContent({ children, meta, skipAuthor }) {
+function PostHeader({ meta }) {
     let { category, title, author, date, tags, slug } = meta;
     tags ||= [];
 
     const router = useRouter();
-
-    const [back, setBack] = useState(false);
-
-    useEffect(() => {
-        console.log(router.query);
-        if (router.query["read-more"] === "") {
-            setBack(true);
-            router.push(`/posts/${slug}`);
-        }
-    }, [router.query]);
+    const [colorMode] = useColorMode();
 
     return (
-        <Box className="post" mb={4}>
-            {back && <Text variant="subheadline" mb={5}>
-                <Link href={`/#${slug}`}>← Back</Link>
-            </Text>}
+        <Box sx={{
+            minWidth: "min(400px, 100%)",
+            width: "400px",
+            maxWidth: "400px",
+        }}>
+            <Heading as="h2" variant="headline" id={slug} mt={0}>
+                {router.pathname == "/" ? <Link href={`/posts/${slug}?read-more`} sx={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    ":hover": {
+                        color: colorMode == "dark" ? "smoke" : "slate",
 
+                    }
+                }}>{title}</Link> : title}
+            </Heading>
 
-            <Heading as="h2" variant="headline" id={slug}>
-                {router.pathname == "/" ? <Link href={`/posts/${slug}?read-more`} color="blue">{title}</Link> : title}
+            <Heading as="h3" mb={2} variant="subheadline" sx={{ color: "muted", m: 0, fontWeight: 500, fontSize: 1 }}>
+                {date.toLocaleDateString('en-us', { year: "numeric", month: "long", day: "numeric" })}
             </Heading>
 
             <Box sx={{ display: "flex", alignItems: "center", gap: 3, my: 2 }}>
 
-                <Heading as="h3" variant="subheadline" sx={{ color: "muted", m: 0 }}>
-                    {date.toLocaleDateString()}
-                </Heading>
 
                 {category == "new" && <Badge variant="pill" sx={{
                     borderRadius: 4
@@ -101,6 +101,51 @@ function PostContent({ children, meta, skipAuthor }) {
                 }}>Transfers</Badge>}
 
             </Box>
+        </Box>
+    )
+}
+
+function PostContent({ children, meta, skipAuthor }) {
+    let { category, title, author, date, tags, slug } = meta;
+    tags ||= [];
+
+    const display = useDisplay();
+
+    if (display == "home") return (
+        <Flex sx={{
+            flexDirection: ["column", "column", "column", "row"],
+            justifyContent: "space-between",
+            px: 66,
+            maxWidth: "1400px",
+            mb: 4,
+            gap: 5
+        }}>
+            <PostHeader meta={meta} />
+            <Box sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 5,
+                flexGrow: "1",
+                width: "100%"
+            }}>
+
+
+                <Box className="post" mb={4}>
+                    <Box className="post-content">
+                        {children}
+                    </Box>
+
+                    {author && !skipAuthor && <Author id={author} />}
+                </Box>
+            </Box>
+
+        </Flex>
+
+    )
+    else return (
+        <Box className="post" mb={4}>
+
+            <PostHeader meta={meta} />
 
             <Box className="post-content">
                 {children}
@@ -112,8 +157,6 @@ function PostContent({ children, meta, skipAuthor }) {
 }
 
 export function Post({ children, meta, skipAuthor }) {
-
-
     return (
         <PostContext.Provider value={meta}>
             <PostContent meta={meta} skipAuthor={skipAuthor}>{children}</PostContent>
@@ -121,7 +164,7 @@ export function Post({ children, meta, skipAuthor }) {
     );
 }
 
-export function Preview ({ children, skipLink }) {
+export function Preview({ children, skipLink }) {
     const meta = useContext(PostContext);
 
     return (

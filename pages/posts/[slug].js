@@ -1,14 +1,17 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import { posts } from "@/content/index";
-import { Box, Container, Flex } from "theme-ui";
+import { DisplayProvider } from "@/lib/display";
+import useDocument from "@/lib/useDocument";
+import { Box, Container, Flex, Link, Text } from "theme-ui";
 
 export default function Post({ slug }) {
     const post = posts.find(post => post.meta.slug === slug);
     const PostBody = post.component;
+    const document = useDocument();
 
     return (
-        <>
+        <DisplayProvider display="detail">
             <Header concise />
             <Box as="main" sx={{ color: 'text' }}>
                 <Container as="article" variant="wide" sx={{ pt: 3, pb: [3, 4], minHeight: "calc(100vh - 200px)" }}>
@@ -22,6 +25,10 @@ export default function Post({ slug }) {
                             maxWidth: "800px",
 
                         }}>
+                            {document?.referrer == "http://localhost:3000/" && <Text variant="subheadline" mb={5}>
+                                <Link href={`/#${post.meta.slug}`}>← Back</Link>
+                            </Text>}
+
                             <PostBody />
                         </Box>
 
@@ -29,7 +36,7 @@ export default function Post({ slug }) {
                 </Container>
             </Box>
             <Footer />
-        </>
+        </DisplayProvider>
     )
 }
 
