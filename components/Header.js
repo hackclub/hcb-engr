@@ -44,8 +44,6 @@ export default function Header({ concise }) {
             <Box as="header" sx={{ bg: 'sheet', color: 'text' }}>
                 <Container variant="wide" sx={concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center" } : { pt: 5, pb: [3, 4] }}>
 
-                    <SignIn />
-
                     <Box sx={{
                         display: "flex",
                         justifyContent: "flex-start",
@@ -89,6 +87,8 @@ export default function Header({ concise }) {
                                 <Heading as="h3" variant="subheadline" sx={{ color: "muted", m: 0 }}>
                                     <Link href="https://hcb.hackclub.com">Log in to HCB →</Link>
                                 </Heading>
+
+                                <SignIn />
                             </Box>}
                         </Box>
                     </Box>
