@@ -24,7 +24,7 @@ export default function SignIn() {
       as="a"
       href="https://hcb.hackclub.com"
       variant="outline"
-      sx={{ color: 'white' }}
+      sx={{ color: 'black' }}
     >
       {user ? (
         <>
