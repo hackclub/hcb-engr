@@ -64,7 +64,17 @@ export default function Header({ concise }) {
             }}
             variant="headline"
           >
-            HCB Blog
+            <Link
+              href="/"
+              sx={{
+                height: '40px',
+                textDecoration: 'none',
+                m: 0,
+                color: 'inherit'
+              }}
+            >
+              HCB Blog
+            </Link>
           </Heading>
 
           {/* <SignIn color="white" /> */}
