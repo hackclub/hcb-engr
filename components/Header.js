@@ -28,7 +28,6 @@ export default function Header({ concise }) {
           zIndex: 1000,
           display: 'flex'
         }}
-        id="top"
       >
         <Container
           variant="wide"
@@ -97,6 +96,7 @@ export default function Header({ concise }) {
           color: 'text',
           position: 'relative'
         }}
+        id="top"
       >
         <Image
           src="/ui.png"
