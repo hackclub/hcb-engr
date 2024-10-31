@@ -148,12 +148,12 @@ export default function Header({ concise }) {
             ],
             ...(concise
               ? {
-                  pt: 4,
-                  pb: 2,
-                  display: 'flex',
-                  justifyContent: 'center',
-                  position: 'relative'
-                }
+                pt: 4,
+                pb: 2,
+                display: 'flex',
+                justifyContent: 'center',
+                position: 'relative'
+              }
               : { pt: 5, pb: [3, 4], position: 'relative' })
           }}
         >
@@ -167,9 +167,9 @@ export default function Header({ concise }) {
               gap: 3,
               ...(concise
                 ? {
-                    width: '100%',
-                    maxWidth: '800px'
-                  }
+                  width: '100%',
+                  maxWidth: '800px'
+                }
                 : {})
             }}
           >
@@ -229,7 +229,7 @@ export default function Header({ concise }) {
                     variant="subheadline"
                     sx={{ color: 'muted', m: 0 }}
                   >
-                    <Link href="https://hackclub.com/hcb">What's HCB? →</Link>
+                    <Link href="https://hackclub.com/hcb" target="_blank">What's HCB? →</Link>
                   </Heading>
 
                   <SignIn />
