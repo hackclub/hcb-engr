@@ -19,6 +19,7 @@ export default function Home() {
     return (
         <>
             <Header />
+            <title>HCB Blog</title>
 
             <Box as="main" sx={{ color: 'text' }} className="post-list">
                 <Container as="article" variant="wide" sx={{ pt: 5, pb: [4, 5] }}>
