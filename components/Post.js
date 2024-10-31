@@ -59,7 +59,7 @@ function PostHeader({ meta }) {
         <Box sx={{
             minWidth: "min(400px, 100%)",
             width: "400px",
-            maxWidth: "400px"
+            maxWidth: "100%"
         }}>
             <Heading as="h2" variant="headline" id={slug} mt={0}>
                 {router.pathname == "/" ? <Link href={`/posts/${slug}?read-more`} sx={{
