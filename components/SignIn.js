@@ -7,7 +7,7 @@ export default function SignIn({ color }) {
       useState(null)
     )
 
-    const [colorMode] = useColorMode();
+  const [colorMode] = useColorMode()
 
   useEffect(() => {
     ;(async () => {
@@ -26,7 +26,7 @@ export default function SignIn({ color }) {
       as="a"
       href="https://hcb.hackclub.com"
       variant="outline"
-      sx={{ color: color || (colorMode == "dark" ? 'white' : 'black') }}
+      sx={{ color: color || (colorMode == 'dark' ? 'white' : 'black') }}
     >
       {user ? (
         <>

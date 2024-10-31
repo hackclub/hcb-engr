@@ -1,6 +1,7 @@
 @font-face {
   font-family: 'Phantom Sans';
-  src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff')
+  src:
+    url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff')
       format('woff'),
     url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Regular.woff2')
       format('woff2');
@@ -10,7 +11,8 @@
 }
 @font-face {
   font-family: 'Phantom Sans';
-  src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Med.woff')
+  src:
+    url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Med.woff')
       format('woff'),
     url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Med.woff2')
       format('woff2');
@@ -20,7 +22,8 @@
 }
 @font-face {
   font-family: 'Phantom Sans';
-  src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/SemiBold.woff')
+  src:
+    url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/SemiBold.woff')
       format('woff'),
     url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/SemiBold.woff2')
       format('woff2');
@@ -30,7 +33,8 @@
 }
 @font-face {
   font-family: 'Phantom Sans';
-  src: url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff')
+  src:
+    url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff')
       format('woff'),
     url('https://assets.hackclub.com/fonts/Phantom_Sans_0.7/Bold.woff2')
       format('woff2');

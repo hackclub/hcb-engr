@@ -18,17 +18,16 @@ Follow the following steps to create a new post:
 import Post from '@/components/Post.js'
 
 export const meta = {
-    title: "My New Post",
-    id: "my-new-post", // make sure this matches the directory name
-    category: "new" // one of "new", "newsletter", "improvement"
-} 
+  title: 'My New Post',
+  id: 'my-new-post', // make sure this matches the directory name
+  category: 'new' // one of "new", "newsletter", "improvement"
+}
 
-<Post meta={meta}>
-    # Post content goes here
-    Using either markdown or JSX
-</Post>
+<Post meta={meta}># Post content goes here Using either markdown or JSX</Post>
 ```
+
 4. Reference the new post in `/content/posts/posts.js` (this adds it to the website)
+
 ```js
 export * as z from './my-new-post/post.mdx'
 ```
