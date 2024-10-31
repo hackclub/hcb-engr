@@ -15,7 +15,7 @@ export default function Header({ concise }) {
     const [colorMode, setColorMode] = useColorMode();
     return (
         <>
-            <Container variant="wide" sx={{
+            <Box variant="wide" sx={{
                 bg: colorMode == "light" ? "black" : "darker",
                 borderBottom: "1px solid",
                 borderColor: "sheet",
@@ -25,34 +25,44 @@ export default function Header({ concise }) {
                 left: "0px",
                 zIndex: 1000,
                 display: "flex",
-                flexDirection: "row",
-                justifyContent: "flex-start",
-                alignItems: "center",
-                gap: 3
             }} id="top">
-                <Link href="/" sx={{
-                    height: "40px"
+                <Container variant="wide" sx={{
+                    flexDirection: "row",
+                    justifyContent: "flex-start",
+                    alignItems: "center",
+                    gap: 3,
+                    px: 3,
+                    height: "64px",
+                    display: "flex",
+                    position: "relative"
                 }}>
-                    <Image src="https://assets.hackclub.com/hcb-light.svg" alt="HCB Logo" sx={{
-                        height: "100%"
-                    }} />
-                </Link>
+                    <Link href="/" sx={{
+                        height: "40px"
+                    }}>
+                        <Image src="https://assets.hackclub.com/hcb-light.svg" alt="HCB Logo" sx={{
+                            height: "100%"
+                        }} />
+                    </Link>
 
-                <Heading sx={{
-                    color: "white"
-                }} variant="headline">HCB Blog</Heading>
+                    <Heading sx={{
+                        color: "white"
+                    }} variant="headline">HCB Blog</Heading>
 
-                {/* <SignIn color="white" /> */}
+                    {/* <SignIn color="white" /> */}
 
 
-                <ColorSwitcher />
-            </Container>
+                    <ColorSwitcher />
+                </Container>
+            </Box>
 
             <Box as="header" sx={{
-                background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)"],
+                background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249, 250, 252, 1) 27%, rgb(255 255 255) 80%)"],
                 color: 'text'
             }}>
-                <Container variant="wide" sx={concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center", position: "relative" } : { pt: 5, pb: [3, 4], position: "relative" }}>
+                <Container variant="wide" sx={{
+                    background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)"],
+                    ...(concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center", position: "relative" } : { pt: 5, pb: [3, 4], position: "relative" })
+                }}>
 
                     <Box sx={{
                         display: "flex",
