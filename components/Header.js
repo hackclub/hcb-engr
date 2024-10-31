@@ -56,27 +56,11 @@ export default function Header({ concise }) {
             </Box>
 
             <Box as="header" sx={{
-                background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249, 250, 252, 1) 27%, rgb(255 255 255) 80%)"],
-                color: 'text'
-            }}>
-                <Container variant="wide" sx={{
                     background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)"],
-                    ...(concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center", position: "relative" } : { pt: 5, pb: [3, 4], position: "relative" })
-                }}>
-
-                    <Box sx={{
-                        display: "flex",
-                        justifyContent: "flex-start",
-                        alignItems: "flex-start",
-                        flexDirection: "row",
-                        mb: 4,
-                        gap: 3,
-                        ...(concise ? {
-                            width: "100%",
-                            maxWidth: "800px",
-                        } : {}),
-                    }}>
-                        <Image src="/ui.png" alt="UI" sx={{
+                    color: 'text',
+                    position: "relative"
+            }}>
+                                        <Image src="/ui.png" alt="UI" sx={{
                             position: "absolute",
                             bottom: "0px",
                             right: "0px",
@@ -94,6 +78,24 @@ export default function Header({ concise }) {
                             zIndex: 999,
                             display: ["none", "none", "none", colorMode == "dark" ? "block" : "none"]
                         }} />
+
+                <Container variant="wide" sx={{
+                    background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)"],
+                    ...(concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center", position: "relative" } : { pt: 5, pb: [3, 4], position: "relative" })
+                }}>
+
+                    <Box sx={{
+                        display: "flex",
+                        justifyContent: "flex-start",
+                        alignItems: "flex-start",
+                        flexDirection: "row",
+                        mb: 4,
+                        gap: 3,
+                        ...(concise ? {
+                            width: "100%",
+                            maxWidth: "800px",
+                        } : {}),
+                    }}>
                         <Link href="/">
                             <Image src="https://assets.hackclub.com/hcb-light.svg" alt="HCB Logo" sx={{
                                 height: "50px"
