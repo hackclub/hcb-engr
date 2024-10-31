@@ -9,7 +9,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import { useDisplay } from "@/lib/display";
 import useDocument from "@/lib/useDocument";
 
-function Tag ({ children }) {
+function Tag({ children }) {
     return (
         <Badge variant="outline" sx={{
             color: "red",
@@ -161,7 +161,7 @@ export function Preview({ children, skipLink }) {
     return (
         <>
             <Box className="post-preview">{children}</Box>
-{/* 
+            {/* 
             {!skipLink && (
                     <Heading as="h3" variant="subheadline" mt={2} className="post-link">
                         <Link href={`/posts/${meta.slug}?read-more`}>Read more →</Link>
@@ -169,26 +169,25 @@ export function Preview({ children, skipLink }) {
             )} */}
             <Card className="post-link" variant="sunken" sx={{
                 padding: "16px!important",
-                borderRadius: "0px",
                 display: "flex!important",
                 justifyContent: "space-between",
                 flexDirection: "row",
                 alignItems: "center",
-                width: "100%"
-
+                width: "100%",
+                borderRadius: 5
             }} mt={4}>
-                                                <Heading as="h3" variant="subheadline" m={0} sx={{
-                                                    display: "inline-flex"
-                                                }}>
-                        {meta.title}
-                    </Heading>
+                <Heading as="h3" variant="subheadline" m={0} sx={{
+                    display: "inline-flex"
+                }}>
+                    {meta.title}
+                </Heading>
 
-                                <Heading as="h3" variant="subheadline" m={0} sx={{
-                                    display: "inline-flex"
-                                }}>
-                        <Link href={`/posts/${meta.slug}?read-more`}>Read more →</Link>
-                    </Heading>
-                    </Card>
+                <Heading as="h3" variant="subheadline" m={0} sx={{
+                    display: "inline-flex"
+                }}>
+                    <Link href={`/posts/${meta.slug}?read-more`}>Read more →</Link>
+                </Heading>
+            </Card>
 
         </>
     );
