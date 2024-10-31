@@ -14,7 +14,7 @@ export default class App extends NextApp {
     return (
       <ThemeProvider theme={theme}>
         <Head>
-          <meta property="og:image" content="https://hackclub.com/og-v1.png" />
+          <meta property="og:image" content="https://bank.engineering/og-v1.png" />
         </Head>
         <Component {...pageProps} />
       </ThemeProvider>
