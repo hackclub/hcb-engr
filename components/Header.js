@@ -1,4 +1,5 @@
-import { Box, Container, Heading, Image, Link, Text } from "theme-ui";
+import { Box, Container, Heading, Image, Text, useColorMode } from "theme-ui";
+import Link from "../components/Link";
 import ColorSwitcher from '../components/color-switcher'
 import SignIn from "./SignIn";
 
@@ -11,14 +12,18 @@ function UnstyledLink({ children, ...props }) {
 }
 
 export default function Header({ concise }) {
+    const [colorMode, setColorMode] = useColorMode();
     return (
         <>
-            <Container variant="wide" bg="black" sx={{
+            <Container variant="wide" sx={{
+                bg: colorMode == "light" ? "black" : "darker",
+                borderBottom: "1px solid",
+                borderColor: "sheet",
                 height: "64px",
                 position: "sticky",
                 top: "0px",
                 left: "0px",
-                zIndex: 10,
+                zIndex: 1000,
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "flex-start",
@@ -37,12 +42,17 @@ export default function Header({ concise }) {
                     color: "white"
                 }} variant="headline">HCB Blog</Heading>
 
+                {/* <SignIn color="white" /> */}
+
 
                 <ColorSwitcher />
             </Container>
 
-            <Box as="header" sx={{ bg: 'sheet', color: 'text' }}>
-                <Container variant="wide" sx={concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center" } : { pt: 5, pb: [3, 4] }}>
+            <Box as="header" sx={{
+                background: ["sheet", "sheet", "sheet", colorMode == "dark" ? "sheet" : "linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)"],
+                color: 'text'
+            }}>
+                <Container variant="wide" sx={concise ? { pt: 4, pb: 2, display: "flex", justifyContent: "center", position: "relative" } : { pt: 5, pb: [3, 4], position: "relative" }}>
 
                     <Box sx={{
                         display: "flex",
@@ -54,8 +64,26 @@ export default function Header({ concise }) {
                         ...(concise ? {
                             width: "100%",
                             maxWidth: "800px",
-                        } : {})
+                        } : {}),
                     }}>
+                        <Image src="/ui.png" alt="UI" sx={{
+                            position: "absolute",
+                            bottom: "0px",
+                            right: "0px",
+                            height: "100%",
+                            opacity: 1,
+                            zIndex: 999,
+                            display: ["none", "none", "none", colorMode == "light" ? "block" : "none"]
+                        }} />
+                        <Image src="/ui-dark.png" alt="UI" sx={{
+                            position: "absolute",
+                            bottom: "0px",
+                            right: "0px",
+                            height: "100%",
+                            opacity: 1,
+                            zIndex: 999,
+                            display: ["none", "none", "none", colorMode == "dark" ? "block" : "none"]
+                        }} />
                         <Link href="/">
                             <Image src="https://assets.hackclub.com/hcb-light.svg" alt="HCB Logo" sx={{
                                 height: "50px"

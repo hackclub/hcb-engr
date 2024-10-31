@@ -1,5 +1,5 @@
 import { posts } from "../content";
-import { Box, Card, Container, Flex, Grid, Heading, Image, Link, Text } from "theme-ui";
+import { Box, Card, Container, Divider, Flex, Grid, Heading, Image, Link, Text } from "theme-ui";
 import Header from "../components/Header";
 import Footer from "@/components/Footer";
 import { useEffect, useState } from "react";
@@ -21,10 +21,13 @@ export default function Home() {
             <Header />
 
             <Box as="main" sx={{ color: 'text' }} className="post-list">
-                <Container as="article" variant="wide" sx={{ pt: 3, pb: [3, 4] }}>
+                <Container as="article" variant="wide" sx={{ pt: 5, pb: [4, 5] }}>
 
-                    {posts.toReversed().map((post) => (
-                        <PostPreview key={post.meta.slug} post={post} />
+                    {posts.toReversed().map((post, i) => (
+                        <>
+                            <PostPreview key={post.meta.slug} post={post} />
+                            {i < posts.length - 1 && <Divider my={5} />}
+                        </>
                     ))}
                 </Container>
 

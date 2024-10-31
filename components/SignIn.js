@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Button, Image, useColorMode } from 'theme-ui'
 
-export default function SignIn() {
+export default function SignIn({ color }) {
   const [user, setUser] =
     /** @type {ReturnType<typeof useState<{name?: string, avatar?: string} | null>>} */ (
       useState(null)
@@ -26,7 +26,7 @@ export default function SignIn() {
       as="a"
       href="https://hcb.hackclub.com"
       variant="outline"
-      sx={{ color: colorMode == "dark" ? 'white' : 'black' }}
+      sx={{ color: color || (colorMode == "dark" ? 'white' : 'black') }}
     >
       {user ? (
         <>
