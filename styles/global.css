@@ -22,7 +22,7 @@
 }
 
 .post-list .post .post-content .post-link {
-    display: block;
+    display: flex;
 }
 
 :root {

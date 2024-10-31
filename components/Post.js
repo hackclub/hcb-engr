@@ -59,7 +59,7 @@ function PostHeader({ meta }) {
         <Box sx={{
             minWidth: "min(400px, 100%)",
             width: "400px",
-            maxWidth: "400px",
+            maxWidth: "400px"
         }}>
             <Heading as="h2" variant="headline" id={slug} mt={0}>
                 {router.pathname == "/" ? <Link href={`/posts/${slug}?read-more`} sx={{
@@ -138,7 +138,7 @@ function PostContent({ children, meta, skipAuthor }) {
 
             <PostHeader meta={meta} />
 
-            <Box className="post-content">
+            <Box className="post-content" mt={4}>
                 {children}
             </Box>
 
@@ -169,7 +169,6 @@ export function Preview({ children, skipLink }) {
             )} */}
             <Card className="post-link" variant="sunken" sx={{
                 padding: "16px!important",
-                display: "flex!important",
                 justifyContent: "space-between",
                 flexDirection: "row",
                 alignItems: "center",
