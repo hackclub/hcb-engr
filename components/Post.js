@@ -113,7 +113,7 @@ function PostHeader({ meta }) {
       <Heading as="h2" variant="headline" id={slug} mt={0}>
         {router.pathname == '/' ? (
           <Link
-            href={`/posts/${slug}?read-more`}
+            href={`/posts/${slug}`}
             sx={{
               textDecoration: 'none',
               color: 'inherit',
@@ -212,12 +212,6 @@ export function Preview({ children, skipLink }) {
   return (
     <>
       <Box className="post-preview">{children}</Box>
-      {/* 
-            {!skipLink && (
-                    <Heading as="h3" variant="subheadline" mt={2} className="post-link">
-                        <Link href={`/posts/${meta.slug}?read-more`}>Read more →</Link>
-                    </Heading>
-            )} */}
       <Card
         className="post-link"
         variant="sunken"
@@ -250,7 +244,7 @@ export function Preview({ children, skipLink }) {
             display: 'inline-flex'
           }}
         >
-          <Link href={`/posts/${meta.slug}?read-more`}>Read more →</Link>
+          <Link href={`/posts/${meta.slug}`}>Read more →</Link>
         </Heading>
       </Card>
     </>
