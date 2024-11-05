@@ -18,7 +18,7 @@ export default function Post({ slug }) {
       <Head>
         <title>{post.meta.title}</title>
       </Head>
-      <Header concise />
+      <Header post={post} />
       <Box as="main" sx={{ color: 'text' }}>
         <Container
           as="article"
@@ -28,7 +28,8 @@ export default function Post({ slug }) {
           <Flex
             sx={{
               flexDirection: ['column', 'row'],
-              justifyContent: 'center'
+              // justifyContent: 'center'
+              px: "66px"
             }}
             gap={6}
           >
@@ -40,19 +41,20 @@ export default function Post({ slug }) {
             >
               {(document?.referrer == 'http://localhost:3000/' ||
                 referrer == '/') && (
-                <Text
-                  variant="subheadline"
-                  sx={{
-                    display: 'block',
-                    mb: 3
-                  }}
-                >
-                  <Link href={`/#${post.meta.slug}`}>← Back</Link>
-                </Text>
-              )}
+                  <Text
+                    variant="subheadline"
+                    sx={{
+                      display: 'block',
+                      mb: 3
+                    }}
+                  >
+                    <Link href={`/#${post.meta.slug}`}>← Back</Link>
+                  </Text>
+                )}
 
               <PostBody />
             </Box>
+            <Box bg="green"></Box>
           </Flex>
         </Container>
       </Box>

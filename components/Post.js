@@ -47,7 +47,7 @@ const PostContext = createContext()
  * @property {string} slug - The slug of the post
  */
 
-export function Author({ id, overrideText }) {
+export function Author({ id, overrideText, sx }) {
   const author = authors[id]
 
   console.log({ author })
@@ -62,7 +62,7 @@ export function Author({ id, overrideText }) {
       <Heading
         as="h3"
         variant="subheadline"
-        sx={{ color: 'muted', m: 0, fontWeight: 500 }}
+        sx={{ color: 'muted', m: 0, fontWeight: 500, ...sx }}
       >
         {overrideText
           ? overrideText
@@ -71,6 +71,27 @@ export function Author({ id, overrideText }) {
             : author.name}
       </Heading>
     </Box>
+  )
+}
+
+export function PostTags({ tags, category }) {
+  tags ||= [];
+  return (
+    <>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, my: 2 }}>
+        {category == 'new' && <Tag>New Feature</Tag>}
+        {category == 'improvement' && <Tag>Improvement</Tag>}
+        {category == 'newsletter' && <Tag>Newsletter</Tag>}
+
+        {tags.includes('ledger') && <Tag>Ledger</Tag>}
+        {tags.includes('security') && <Tag>Security</Tag>}
+        {tags.includes('cards') && <Tag>Cards</Tag>}
+        {tags.includes('receipts') && <Tag>Receipts</Tag>}
+        {tags.includes('invoices') && <Tag>Invoices</Tag>}
+        {tags.includes('donations') && <Tag>Donations</Tag>}
+        {tags.includes('transfers') && <Tag>Transfers</Tag>}
+      </Box>
+    </>
   )
 }
 
@@ -121,19 +142,7 @@ function PostHeader({ meta }) {
         })}
       </Heading>
 
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, my: 2 }}>
-        {category == 'new' && <Tag>New Feature</Tag>}
-        {category == 'improvement' && <Tag>Improvement</Tag>}
-        {category == 'newsletter' && <Tag>Newsletter</Tag>}
-
-        {tags.includes('ledger') && <Tag>Ledger</Tag>}
-        {tags.includes('security') && <Tag>Security</Tag>}
-        {tags.includes('cards') && <Tag>Cards</Tag>}
-        {tags.includes('receipts') && <Tag>Receipts</Tag>}
-        {tags.includes('invoices') && <Tag>Invoices</Tag>}
-        {tags.includes('donations') && <Tag>Donations</Tag>}
-        {tags.includes('transfers') && <Tag>Transfers</Tag>}
-      </Box>
+      <PostTags tags={tags} category={category} />
     </Box>
   )
 }
@@ -177,7 +186,6 @@ function PostContent({ children, meta, skipAuthor }) {
   else
     return (
       <Box className="post" mb={4}>
-        <PostHeader meta={meta} />
 
         <Box className="post-content" mt={4}>
           {children}

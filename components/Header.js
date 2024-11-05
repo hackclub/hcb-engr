@@ -2,6 +2,7 @@ import { Box, Container, Heading, Image, Text, useColorMode } from 'theme-ui'
 import Link from '../components/Link'
 import ColorSwitcher from '../components/color-switcher'
 import SignIn from './SignIn'
+import { Author, PostTags } from './Post'
 
 function UnstyledLink({ children, ...props }) {
   return (
@@ -11,7 +12,8 @@ function UnstyledLink({ children, ...props }) {
   )
 }
 
-export default function Header({ concise }) {
+export default function Header({ post }) {
+  const concise = false;
   const [colorMode, setColorMode] = useColorMode()
   return (
     <>
@@ -52,7 +54,7 @@ export default function Header({ concise }) {
               src="https://assets.hackclub.com/hcb-light.svg"
               alt="HCB Logo"
               sx={{
-                height: '100%'
+                height: '100%',
               }}
             />
           </Link>
@@ -98,42 +100,44 @@ export default function Header({ concise }) {
         }}
         id="top"
       >
-        <Image
-          src="/ui.png"
-          alt="UI"
-          sx={{
-            position: 'absolute',
-            bottom: '0px',
-            right: '0px',
-            height: '100%',
-            opacity: 1,
-            zIndex: 999,
-            display: [
-              'none',
-              'none',
-              'none',
-              colorMode == 'light' ? 'block' : 'none'
-            ]
-          }}
-        />
-        <Image
-          src="/ui-dark.png"
-          alt="UI"
-          sx={{
-            position: 'absolute',
-            bottom: '0px',
-            right: '0px',
-            height: '100%',
-            opacity: 1,
-            zIndex: 999,
-            display: [
-              'none',
-              'none',
-              'none',
-              colorMode == 'dark' ? 'block' : 'none'
-            ]
-          }}
-        />
+        {!post && <>
+          <Image
+            src="/ui.png"
+            alt="UI"
+            sx={{
+              position: 'absolute',
+              bottom: '0px',
+              right: '0px',
+              height: '100%',
+              opacity: 1,
+              zIndex: 999,
+              display: [
+                'none',
+                'none',
+                'none',
+                colorMode == 'light' ? 'block' : 'none'
+              ]
+            }}
+          />
+          <Image
+            src="/ui-dark.png"
+            alt="UI"
+            sx={{
+              position: 'absolute',
+              bottom: '0px',
+              right: '0px',
+              height: '100%',
+              opacity: 1,
+              zIndex: 999,
+              display: [
+                'none',
+                'none',
+                'none',
+                colorMode == 'dark' ? 'block' : 'none'
+              ]
+            }}
+          />
+        </>}
 
         <Container
           variant="wide"
@@ -178,34 +182,44 @@ export default function Header({ concise }) {
                 src="https://assets.hackclub.com/hcb-light.svg"
                 alt="HCB Logo"
                 sx={{
-                  height: '50px'
+                  height: '50px',
+                  visibility: post ? "hidden" : "visible"
                 }}
               />
             </Link>
             <Box mt={0}>
-              {concise ? (
+              {post ? (
                 <>
-                  <Box
-                    sx={{ display: 'flex', alignItems: 'flex-end', gap: 4 }}
-                    mt={0}
-                    mb={1}
-                  >
-                    <UnstyledLink href="/">
-                      <Heading
-                        m={0}
-                        as="h1"
-                        variant="title"
-                        sx={{
-                          fontSize: [4, 5]
-                        }}
-                      >
-                        HCB Blog
-                      </Heading>
-                    </UnstyledLink>
-                    <Heading m={0} as="h2" variant="eyebrow">
-                      The latest on all-things HCB
+                  <Heading mt={-1} mb={1} as="h2" sx={{
+                    fontSize: 4,
+                  }}>
+                    {post.meta.title}
+                  </Heading>
+                  <Box sx={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    justifyContent: "start",
+                    gap: 3
+                  }}>
+                    <Heading as="h3" sx={{
+                      fontSize: 2,
+                      fontWeight: 500,
+                      color: "secondary",
+                      display: "inline-flex"
+                    }}>
+                      {post.meta.date.toLocaleDateString('en-us', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                      })}
                     </Heading>
+                    <PostTags tags={post.meta.tags} category={post.meta.category} />
                   </Box>
+                  <Author id={post.meta.author} sx={{
+                    color: "secondary",
+                    fontWeight: 400
+                  }} />
                 </>
               ) : (
                 <>
@@ -220,7 +234,7 @@ export default function Header({ concise }) {
                 </>
               )}
 
-              {!concise && (
+              {!post && (
                 <Box
                   sx={{ display: 'flex', alignItems: 'center', gap: 4, mt: 3 }}
                 >
