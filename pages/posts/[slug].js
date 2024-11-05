@@ -17,6 +17,15 @@ export default function Post({ slug }) {
     <DisplayProvider display="detail">
       <Head>
         <title>{post.meta.title}</title>
+        <meta
+          property='og:description'
+          content={`${post.meta.date.toLocaleDateString('en-us', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}`}
+        />
+
       </Head>
       <Header post={post} />
       <Box as="main" sx={{ color: 'text' }}>
