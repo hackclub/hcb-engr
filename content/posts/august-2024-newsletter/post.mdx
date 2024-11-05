@@ -1,16 +1,13 @@
-import { Post, Author, Preview } from '@/components/Post.js'
-import Image from 'next/image'
+import post, { Author, Preview, Image } from '@/components/Post.js'
 
-export const meta = {
+export default post({
   title: '📣 HCB August Newsletter',
   slug: 'newsletter-2024-august',
   category: 'newsletter',
   author: 'dylan',
   cover: commandBar,
   date: new Date('2024-08-21')
-}
-
-<Post meta={meta} skipAuthor>
+})
 
 <Preview>
 Welcome to the newly revamped HCB monthly newsletter... we got word your inbox was feeling lonely, so we're here to spice things up! We're starting a monthly newsletter to show off what's new on HCB and highlight some of the amazing work our organizations are doing.
@@ -98,5 +95,3 @@ We hope you enjoy these new changes. As always, if you have feedback or feature 
 All the best,
 
 <Author id="dylan" overrideText="Dylan and The HCB Team" />
-
-</Post>

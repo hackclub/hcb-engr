@@ -4,8 +4,8 @@ import { Heading, Link, Text } from 'theme-ui'
 import theme from '@hackclub/theme'
 
 const posts = Object.entries(rawPosts).map(
-  ([_, { meta, default: rawComponent }]) => ({
-    meta,
+  ([_, { default: rawComponent }]) => ({
+    meta: rawComponent.__proto__.meta,
     rawComponent,
     component: props => {
       const Component = rawComponent

@@ -1,8 +1,8 @@
-import { Box, Container, Heading, Image, Text, useColorMode } from 'theme-ui'
+import { Box, Container, Heading, Image, useColorMode } from 'theme-ui'
 import Link from '../components/Link'
 import ColorSwitcher from '../components/color-switcher'
-import SignIn from './SignIn'
 import { Author, PostTags } from './Post'
+import SignIn from './SignIn'
 
 function UnstyledLink({ children, ...props }) {
   return (

@@ -1,7 +1,7 @@
-import Post from '@/components/Post.js'
+import post from '@/components/Post.js'
 import Image from 'next/image'
 
-export const meta = {
+export default post({
     title: "✔︎ Verifying your account & routing number?",
     slug: "verification-letter",
     category: "new",
@@ -10,10 +10,8 @@ export const meta = {
     ],
     author: "manu",
     date: new Date('2024-08-21')
+})
 
-};
-
-<Post meta={meta}>
 
 Are you trying to manually link your organization's **account & routing numbers** with a 3rd party service? Sometimes these services will ask for a bank account letter that proves you have access to your account number.
 
@@ -24,5 +22,3 @@ This handy one-pager allows organizations on HCB to prove they have access to th
 import verificationLetter from './verificationLetter.png'
 
 <Image src={verificationLetter} />
-
-</Post>

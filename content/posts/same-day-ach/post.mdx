@@ -1,20 +1,18 @@
-import Post from '@/components/Post.js'
+import post from '@/components/Post.js'
 
-export const meta = {
+export default post({
   title: "⚡ We've sped up ACH transfers from three days to one day",
   slug: 'same-day-ach',
   category: 'new',
   tags: ['transfers'],
   author: 'sam',
   date: new Date('2024-08-21')
-}
+})
 
-<Post meta={meta}>
+
 
 All ACH transfers sent from HCB are now processed [same-day](https://en.wikipedia.org/wiki/ACH_Network#Same-day_ACH)!
 
 That means, the moment an ACH is approved by HCB, it’ll arrive that day ([view the timing specifics](https://column.com/docs/ach/timing#same-day-timing)). In most cases, this should cut the waiting time for an ACH from three business days to one.
 
 ![xmms2okp1p431 (2).jpg](https://cloud.headwayapp.co/changelogs_images/images/big/000/132/595-75e17dc2716a09be1af6c63a6b5c9857cb445c11.jpg)
-
-</Post>

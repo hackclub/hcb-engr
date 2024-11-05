@@ -1,23 +1,18 @@
+import { authors } from '@/content/index.js'
+import { useDisplay } from '@/lib/display'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
+import { createContext, useContext } from 'react'
 import {
   Badge,
   Box,
   Card,
-  Container,
   Flex,
-  Grid,
   Heading,
-  Text,
   useColorMode
 } from 'theme-ui'
 import Link from '../components/Link'
-import { authors } from '@/content/index.js'
-import Header from './Header'
-import Footer from './Footer'
-import Image from 'next/image'
-import { createContext, useContext, useEffect, useState } from 'react'
-import { useDisplay } from '@/lib/display'
-import useDocument from '@/lib/useDocument'
+export { Image }
 
 function Tag({ children }) {
   return (
@@ -251,4 +246,13 @@ export function Preview({ children, skipLink }) {
   )
 }
 
-export default Post
+// export default Post
+export default function post(meta) {
+  function MDXPage({ children }) {
+    return <Post meta={meta} skipAuthor>{children}</Post>
+  }
+
+  MDXPage.__proto__.meta = meta
+
+  return MDXPage;
+}
