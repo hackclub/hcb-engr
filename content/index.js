@@ -76,6 +76,9 @@ const posts = Object.entries(rawPosts).map(
                   {...props}
                 />
               ),
+              code: props => <code style={{
+                fontSize: "inherit"
+              }}>{props.children}</code>,
               a: props => <Link {...props} />,
               p: props => <Text my={3} as="p" {...props} sx={{ fontSize: 2 }} />
             }}
