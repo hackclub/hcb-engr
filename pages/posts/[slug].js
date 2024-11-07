@@ -22,7 +22,8 @@ export default function Post({ slug }) {
           content={`${post.meta.date.toLocaleDateString('en-us', {
             year: 'numeric',
             month: 'long',
-            day: 'numeric'
+            day: 'numeric',
+            timeZone: "Etc/UTC"
           })}`}
         />
 
@@ -73,11 +74,16 @@ export default function Post({ slug }) {
 }
 
 export async function getStaticPaths() {
+  console.log(posts);
+
+
   const paths = posts.map(post => ({
     params: {
       slug: post.meta.slug
     }
   }))
+
+  console.log(paths)
 
   return {
     paths,

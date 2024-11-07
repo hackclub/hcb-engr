@@ -1,6 +1,6 @@
 import { Box, Container, Heading, Image, useColorMode } from 'theme-ui'
-import Link from '../components/Link'
-import ColorSwitcher from '../components/color-switcher'
+import Link from './Link'
+import ColorSwitcher from './color-switcher'
 import { Author, PostTags } from './Post'
 import SignIn from './SignIn'
 
@@ -211,12 +211,13 @@ export default function Header({ post }) {
                       {post.meta.date.toLocaleDateString('en-us', {
                         year: 'numeric',
                         month: 'long',
-                        day: 'numeric'
+                        day: 'numeric',
+                        timeZone: "Etc/UTC"
                       })}
                     </Heading>
                     <PostTags tags={post.meta.tags} category={post.meta.category} />
                   </Box>
-                  <Author id={post.meta.author} sx={{
+                  <Author id={post.meta.authors[0]} sx={{
                     color: "secondary",
                     fontWeight: 400
                   }} />

@@ -11,7 +11,7 @@ import {
   Heading,
   useColorMode
 } from 'theme-ui'
-import Link from '../components/Link'
+import Link from './Link'
 export { Image }
 
 function Tag({ children }) {
@@ -36,10 +36,11 @@ const PostContext = createContext()
  * @typedef {Object} PostMeta
  * @property {string} category - The category of the post
  * @property {string} title - The title of the post
- * @property {string} author - The author of the post
+ * @property {Array.<string>} authors - The authors of the post
  * @property {Date} date - The date of the post
  * @property {Array.<"Ledger"|"Security"|"Cards"|"Receipts"|"Invoices"|"Donations"|"Transfers">} tags - The tags of the post
  * @property {string} slug - The slug of the post
+ * @property {string} slackLink - A link to the corresponding post on Slack
  */
 
 export function Author({ id, overrideText, sx }) {
@@ -48,7 +49,7 @@ export function Author({ id, overrideText, sx }) {
   console.log({ author })
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mt: 3 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
       <Image
         src={author.avatar}
         alt={author.name}
@@ -133,7 +134,8 @@ function PostHeader({ meta }) {
         {date.toLocaleDateString('en-us', {
           year: 'numeric',
           month: 'long',
-          day: 'numeric'
+          day: 'numeric',
+          timeZone: "Etc/UTC"
         })}
       </Heading>
 
@@ -143,7 +145,7 @@ function PostHeader({ meta }) {
 }
 
 function PostContent({ children, meta, skipAuthor }) {
-  let { category, title, author, date, tags, slug } = meta
+  let { category, title, authors, date, tags, slug } = meta
   tags ||= []
 
   const display = useDisplay()
@@ -171,9 +173,19 @@ function PostContent({ children, meta, skipAuthor }) {
           }}
         >
           <Box className="post" mb={0}>
-            <Box className="post-content">{children}</Box>
+            <Box className="post-content">{children}
 
-            {author && !skipAuthor && <Author id={author} />}
+              <Box mt={4} sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "start",
+                justifyContent: "start",
+                gap: 3,
+                mt: 4
+              }}>
+                {authors.map(author => <Author id={author} />)}
+              </Box>
+            </Box>
           </Box>
         </Box>
       </Flex>
@@ -186,7 +198,16 @@ function PostContent({ children, meta, skipAuthor }) {
           {children}
         </Box>
 
-        {author && !skipAuthor && <Author id={author} />}
+        <Box mt={4} sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "start",
+          justifyContent: "start",
+          gap: 3,
+          mt: 4
+        }}>
+          {authors.map(author => <Author id={author} />)}
+        </Box>
       </Box>
     )
 }
@@ -196,6 +217,7 @@ export function Post({ children, meta, skipAuthor }) {
     <PostContext.Provider value={meta}>
       <PostContent meta={meta} skipAuthor={skipAuthor}>
         {children}
+        {meta.preview}
       </PostContent>
     </PostContext.Provider>
   )
@@ -216,7 +238,8 @@ export function Preview({ children, skipLink }) {
           flexDirection: 'row',
           alignItems: 'center',
           width: '100%',
-          borderRadius: 5
+          borderRadius: 5,
+          gap: 3
         }}
         mt={4}
       >
@@ -228,7 +251,24 @@ export function Preview({ children, skipLink }) {
             display: 'inline-flex'
           }}
         >
-          {meta.title}
+          <Author id={meta.authors[0]} sx={{ color: "text" }} />
+        </Heading>
+
+        <Box sx={{
+          flexGrow: 1
+        }}></Box>
+
+
+        <Heading
+          as="h3"
+          variant="subheadline"
+          m={0}
+          sx={{
+            display: 'inline-flex',
+            fontWeight: 400
+          }}
+        >
+          4m read
         </Heading>
 
         <Heading
@@ -246,13 +286,18 @@ export function Preview({ children, skipLink }) {
   )
 }
 
-// export default Post
+/**
+ * Creates a post component with the given metadata.
+ * 
+ * @param {PostMeta} meta - The metadata for the post.
+ * @returns {function} A component that renders the post.
+ */
 export default function post(meta) {
-  function MDXPage({ children }) {
+  const MDXPage = ({ children }) => {
     return <Post meta={meta} skipAuthor>{children}</Post>
   }
 
-  MDXPage.__proto__.meta = meta
+  MDXPage.meta = meta
 
   return MDXPage;
 }

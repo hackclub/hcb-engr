@@ -20,6 +20,7 @@ export default class App extends NextApp {
           <link rel="icon" href="/favicon.png" />
           <link rel="shortcut icon" href="/favicon.png" />
           <link rel="favicon" href="/favicon.png" />
+          <script defer data-domain="bank.engineering" src="https://plausible.io/js/script.js"></script>
         </Head>
         <Component {...pageProps} />
       </ThemeProvider>

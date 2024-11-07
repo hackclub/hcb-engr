@@ -1,11 +1,12 @@
 {
-  "name": "@hackclub/theme-starter",
+  "name": "hcb-engr",
   "version": "0.0.1",
-  "author": "Lachlan Campbell <lachlan@hackclub.com>",
+  "author": "HCB Team <hcb@hackclub.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "next",
+    "dev": "node prebuild.js --watch & next & wait",
+    "prebuild": "node prebuild.js --build",
     "build": "next build",
     "start": "next start"
   },

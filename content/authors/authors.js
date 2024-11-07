@@ -1,6 +1,7 @@
 import sam from './sam.png'
 import team from './team.png'
 import dylan from './dylan.png'
+import manu from './manu.png'
 
 export default {
   sam: {
@@ -19,6 +20,6 @@ export default {
   manu: {
     name: 'Manu Gurudath',
     role: 'Engineer',
-    avatar: dylan
+    avatar: manu
   }
 }

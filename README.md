@@ -15,21 +15,15 @@ Follow the following steps to create a new post:
 3. Add the following frontmatter to the file:
 
 ```mdx
-import Post from '@/components/Post.js'
+import post from '@/components/Post.js'
 
-export const meta = {
+export default post({
   title: 'My New Post',
   id: 'my-new-post', // make sure this matches the directory name
   category: 'new' // one of "new", "newsletter", "improvement"
-}
+})
 
-<Post meta={meta}># Post content goes here Using either markdown or JSX</Post>
-```
-
-4. Reference the new post in `/content/posts/posts.js` (this adds it to the website)
-
-```js
-export * as z from './my-new-post/post.mdx'
+# Post content goes here using either markdown or JSX
 ```
 
 Then you're done!
