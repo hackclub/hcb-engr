@@ -1,8 +1,10 @@
-import { Box, Container, Heading, Image, useColorMode } from 'theme-ui'
+import { Box, Container, Heading, Image, Text, useColorMode } from 'theme-ui'
 import Link from './Link'
 import ColorSwitcher from './color-switcher'
 import { Author, PostTags } from './Post'
 import SignIn from './SignIn'
+import useDocument from '@/lib/useDocument'
+import useReferrer from '@/lib/useReferrer'
 
 function UnstyledLink({ children, ...props }) {
   return (
@@ -15,6 +17,9 @@ function UnstyledLink({ children, ...props }) {
 export default function Header({ post }) {
   const concise = false;
   const [colorMode, setColorMode] = useColorMode()
+  const document = useDocument()
+  const referrer = useReferrer()
+
   return (
     <>
       <Box
@@ -190,6 +195,19 @@ export default function Header({ post }) {
             <Box mt={0}>
               {post ? (
                 <>
+                  {(document?.referrer == 'http://localhost:3000/' ||
+                    referrer == '/') && (
+                      <Text
+                        variant="subheadline"
+                        sx={{
+                          display: 'block',
+                          mb: 4
+                        }}
+                      >
+                        <Link href={`/#${post.meta.slug}`}>← All Posts</Link>
+                      </Text>
+                    )}
+
                   <Heading mt={-1} mb={1} as="h2" sx={{
                     fontSize: 4,
                   }}>

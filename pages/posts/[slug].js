@@ -3,16 +3,12 @@ import Header from '@/components/Header'
 import { Author } from '@/components/Post'
 import { posts } from '@/content/index'
 import { DisplayProvider } from '@/lib/display'
-import useDocument from '@/lib/useDocument'
-import useReferrer from '@/lib/useReferrer'
 import Head from 'next/head'
 import { Box, Card, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 
 export default function Post({ slug }) {
   const post = posts.find(post => post.meta.slug === slug)
   const PostBody = post.component
-  const document = useDocument()
-  const referrer = useReferrer()
 
   return (
     <DisplayProvider display="detail">
@@ -41,7 +37,8 @@ export default function Post({ slug }) {
               flexDirection: ['column', 'column', 'column', 'row'],
               justifyContent: 'space-between',
               px: "66px",
-              gap: 5
+              gap: 5,
+              mt: 4
             }}
             gap={6}
           >
@@ -51,24 +48,12 @@ export default function Post({ slug }) {
                 maxWidth: '800px'
               }}
             >
-              {(document?.referrer == 'http://localhost:3000/' ||
-                referrer == '/') && (
-                  <Text
-                    variant="subheadline"
-                    sx={{
-                      display: 'block',
-                      mb: 3
-                    }}
-                  >
-                    <Link href={`/#${post.meta.slug}`}>← Back</Link>
-                  </Text>
-                )}
-
               <PostBody />
             </Box>
             <Card variant="sunken" sx={{
               width: '100%',
-              maxWidth: ['100%', '100%', '100%', '300px', '400px']
+              maxWidth: ['100%', '100%', '100%', '300px', '400px'],
+              height: "min-content"
             }}>
               <Heading as="h3" sx={{
                 fontSize: 3,
@@ -78,7 +63,7 @@ export default function Post({ slug }) {
               </Heading>
 
               <Grid columns={[1, 2, 3, 1]} gap={3}>
-                {posts.map(post => (
+                {posts.slice(0, 3).map(post => (
                   <Link href={`/posts/${post.meta.slug}`} key={post.meta.slug} sx={{
                     textDecoration: 'none'
                   }}>

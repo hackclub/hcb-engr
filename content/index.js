@@ -1,5 +1,5 @@
 import authors from './authors/authors.js'
-import { Heading, Link, Text } from 'theme-ui'
+import { Heading, Link, Text, useColorMode } from 'theme-ui'
 import theme from '@hackclub/theme'
 import * as rawPosts from '@/.posts-cache.js'
 import Image from 'next/image.js'
@@ -15,6 +15,7 @@ const posts = Object.entries(rawPosts).map(
       rawComponent,
       component: props => {
         const Component = rawComponent
+        const [colorMode] = useColorMode();
         return (
           <Component
             components={{
@@ -76,9 +77,25 @@ const posts = Object.entries(rawPosts).map(
                   {...props}
                 />
               ),
-              code: props => <code style={{
-                fontSize: "inherit"
-              }}>{props.children}</code>,
+              pre: props => <pre style={{
+                background: colorMode == "dark" ? theme.colors.darkless : theme.colors.slate,
+                borderRadius: "6px",
+                padding: "12px",
+                width: "100%",
+                ...props.style
+              }}>
+                <Text sx={{
+                  span: {
+                    bg: colorMode == "dark" ? "darkless" : "slate",
+                    color: "cyan",
+                  }
+                }}>
+                  {props.children}
+                </Text>
+              </pre>,
+              code: props => <Text as="span" color="blue" bg="sheet" sx={{ borderRadius: 6, px: 1 }}><code style={{
+                fontSize: "16px",
+              }}>{props.children}</code></Text>,
               a: props => <Link {...props} />,
               p: props => <Text my={3} as="p" {...props} sx={{ fontSize: 2 }} />
             }}
