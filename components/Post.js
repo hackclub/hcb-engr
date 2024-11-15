@@ -51,8 +51,8 @@ export function Author({ id, overrideText, sx }) {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
       <Image
-        src={author.avatar}
-        alt={author.name}
+        src={author?.avatar || authors.team.avatar}
+        alt={author?.name}
         style={{ height: '32px', width: '32px', borderRadius: '50%' }}
       />
       <Heading
@@ -62,9 +62,9 @@ export function Author({ id, overrideText, sx }) {
       >
         {overrideText
           ? overrideText
-          : author.role
-            ? `${author.name}, ${author.role}`
-            : author.name}
+          : author?.role
+            ? `${author?.name}, ${author?.role}`
+            : (author?.name || id)}
       </Heading>
     </Box>
   )
@@ -183,7 +183,7 @@ function PostContent({ children, meta, skipAuthor }) {
                 gap: 3,
                 mt: 4
               }}>
-                {authors.map(author => <Author id={author} />)}
+                {(Array.isArray(authors) ? authors : [authors]).map(author => <Author id={author} />)}
               </Box>
             </Box>
           </Box>
@@ -206,7 +206,7 @@ function PostContent({ children, meta, skipAuthor }) {
           gap: 3,
           mt: 4
         }}>
-          {authors.map(author => <Author id={author} />)}
+          {(Array.isArray(authors) ? authors : [authors]).map(author => <Author id={author} />)}
         </Box>
       </Box>
     )
