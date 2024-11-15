@@ -97,7 +97,7 @@ const posts = Object.entries(rawPosts).map(
                 fontSize: "16px",
               }}>{props.children}</code></Text>,
               a: props => <Link {...props} />,
-              p: props => <Text my={3} as="p" {...props} sx={{ fontSize: 2 }} />
+              p: props => <Text as="p" {...props} sx={{ fontSize: 2, my: 3, ":first-child": { mt: 0 } }} />
             }}
             {...props}
           />
