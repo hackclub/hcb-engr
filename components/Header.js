@@ -96,9 +96,9 @@ export default function Header({ post }) {
             'sheet',
             'sheet',
             'sheet',
-            colorMode == 'dark'
-              ? 'sheet'
-              : 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+            colorMode == 'light'
+              ? 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+              : 'sheet'
           ],
           color: 'text',
           position: 'relative'
@@ -138,7 +138,7 @@ export default function Header({ post }) {
                 'none',
                 'none',
                 'none',
-                colorMode == 'dark' ? 'block' : 'none'
+                colorMode == 'light' ? 'none' : 'block'
               ]
             }}
           />
@@ -151,9 +151,9 @@ export default function Header({ post }) {
               'sheet',
               'sheet',
               'sheet',
-              colorMode == 'dark'
-                ? 'sheet'
-                : 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+              colorMode == 'light'
+                ? 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+                : 'sheet'
             ],
             ...(concise
               ? {
