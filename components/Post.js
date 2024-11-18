@@ -53,6 +53,9 @@ const PostContext = createContext()
  * @property {Array.<"ledger"|"security"|"cards"|"receipts"|"invoices"|"donations"|"transfers"|"accounting"|"receive-money"|"organizations"|"notifications"|"comments"|"design"|"documents"|"perks"|"api"|"reimbursements"|"spending-controls"|"transparency-mode">} tags - The tags of the post
  * @property {string} slug - The slug of the post
  * @property {string} slackLink - A link to the corresponding post on Slack
+ * @property {string} headwayUrl - A link to the corresponding post on Slack
+ * @property {string} primaryImage - The primary image for the post
+ * @property {string} description - A description of the post for SEO
  */
 
 export function Author({ id, overrideText, sx, small }) {

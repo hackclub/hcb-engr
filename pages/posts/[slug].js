@@ -39,13 +39,14 @@ export default function Post({ slug }) {
         <title>{post.meta.title}</title>
         <meta
           property='og:description'
-          content={`${post.meta.date.toLocaleDateString('en-us', {
+          content={`${post.meta.description || post.meta.date.toLocaleDateString('en-us', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
             timeZone: "Etc/UTC"
           })}`}
         />
+        {post.meta.primaryImage ? <meta property="og:image" content={post.meta.primaryImage?.src} /> : null}
 
       </Head>
       <Header post={post} />
