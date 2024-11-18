@@ -16,10 +16,6 @@ export default class App extends NextApp {
       <QueryParamProvider adapter={NextAdapterApp}>
         <ThemeProvider theme={theme}>
           <Head>
-            <meta
-              property="og:image"
-              content="https://bank.engineering/og-v1.png"
-            />
             <link rel="icon" href="/favicon.png" />
             <link rel="shortcut icon" href="/favicon.png" />
             <link rel="favicon" href="/favicon.png" />

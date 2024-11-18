@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react'
 import { DisplayProvider } from '@/lib/display'
 import { PostTags } from '@/components/Post'
 import { useQueryParam, StringParam } from 'use-query-params';
-
+import Head from 'next/head'
 
 function PostPreview({ post }) {
   const PostBody = post.component
@@ -35,7 +35,14 @@ export default function Home() {
   return (
     <>
       <Header />
-      <title>HCB Blog</title>
+      <Head>
+        <title>HCB Blog</title>
+        <meta
+          property="og:image"
+          content="https://bank.engineering/og-v1.png"
+        />
+      </Head>
+
 
       <Box as="main" sx={{ color: 'text' }} className="post-list">
         <Container as="article" variant="wide" sx={{ pt: 5, pb: [4, 5] }}>

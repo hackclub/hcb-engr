@@ -24,7 +24,7 @@ const relatedPosts = post => {
 
   relatedPosts.sort((a, b) => b.score - a.score);
 
-  console.log({ relatedPosts })
+  // console.log({ relatedPosts })
 
   return relatedPosts.slice(0, 3).map(({ post }) => post);
 }
@@ -32,6 +32,8 @@ const relatedPosts = post => {
 export default function Post({ slug }) {
   const post = posts.find(post => post.meta.slug === slug)
   const PostBody = post.component
+
+  console.log("FOOBAR", post.meta.primaryImage)
 
   return (
     <DisplayProvider display="detail">
@@ -46,7 +48,7 @@ export default function Post({ slug }) {
             timeZone: "Etc/UTC"
           })}`}
         />
-        {post.meta.primaryImage ? <meta property="og:image" content={post.meta.primaryImage?.src} /> : null}
+        {post.meta.primaryImage ? <meta property="og:image" content={"https://bank.engineering" + post.meta.primaryImage.src} /> : null}
 
       </Head>
       <Header post={post} />
@@ -138,7 +140,7 @@ export default function Post({ slug }) {
 }
 
 export async function getStaticPaths() {
-  console.log(posts);
+  // console.log(posts);
 
 
   const paths = posts.map(post => ({
@@ -147,7 +149,7 @@ export async function getStaticPaths() {
     }
   }))
 
-  console.log(paths)
+  // console.log(paths)
 
   return {
     paths,
