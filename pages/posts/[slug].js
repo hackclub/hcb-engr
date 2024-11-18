@@ -34,6 +34,12 @@ export default function Post({ slug }) {
   const PostBody = post.component
 
   console.log("FOOBAR", post.meta.primaryImage)
+  const date = post.meta.date.toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: "Etc/UTC"
+  });
 
   return (
     <DisplayProvider display="detail">
@@ -41,12 +47,7 @@ export default function Post({ slug }) {
         <title>{post.meta.title}</title>
         <meta
           property='og:description'
-          content={`${post.meta.description || post.meta.date.toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            timeZone: "Etc/UTC"
-          })}`}
+          content={post.meta.description ? `${post.meta.description} • ${date}` : date}
         />
         {post.meta.primaryImage ? <meta property="og:image" content={"https://bank.engineering" + post.meta.primaryImage.src} /> : null}
 
