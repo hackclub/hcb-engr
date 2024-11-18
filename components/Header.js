@@ -173,6 +173,7 @@ export default function Header({ post }) {
               alignItems: 'flex-start',
               flexDirection: 'row',
               mb: 4,
+              px: [3, 3, 0],
               gap: 3,
               ...(concise
                 ? {
@@ -182,7 +183,9 @@ export default function Header({ post }) {
                 : {})
             }}
           >
-            <Link href="/">
+            <Link href="/" sx={{
+              display: ["none", "none", "block"]
+            }}>
               <Image
                 src="https://assets.hackclub.com/hcb-light.svg"
                 alt="HCB Logo"

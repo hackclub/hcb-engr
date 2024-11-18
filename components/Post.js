@@ -12,16 +12,28 @@ import {
   useColorMode
 } from 'theme-ui'
 import Link from './Link'
+import theme from '@hackclub/theme'
 export { Image }
+import { useQueryParam, StringParam } from 'use-query-params';
 
-function Tag({ children }) {
+
+function Tag({ children, filterOnClick }) {
+  const [tag, setTag] = useQueryParam('tag', StringParam);
+
+  const id = children.toLowerCase().replace(' ', '-')
+
   return (
     <Badge
       variant="outline"
       sx={{
         color: 'red',
         px: 2,
-        py: 0
+        py: 0,
+        bg: "background",
+        cursor: filterOnClick ? 'pointer' : 'default',
+      }}
+      onClick={() => {
+        if (filterOnClick) setTag(tag == id ? undefined : id)
       }}
     >
       {children}
@@ -38,27 +50,30 @@ const PostContext = createContext()
  * @property {string} title - The title of the post
  * @property {Array.<string>} authors - The authors of the post
  * @property {Date} date - The date of the post
- * @property {Array.<"Ledger"|"Security"|"Cards"|"Receipts"|"Invoices"|"Donations"|"Transfers">} tags - The tags of the post
+ * @property {Array.<"ledger"|"security"|"cards"|"receipts"|"invoices"|"donations"|"transfers"|"accounting"|"receive-money"|"organizations"|"notifications"|"comments"|"design"|"documents"|"perks"|"api"|"reimbursements"|"spending-controls"|"transparency-mode">} tags - The tags of the post
  * @property {string} slug - The slug of the post
  * @property {string} slackLink - A link to the corresponding post on Slack
  */
 
-export function Author({ id, overrideText, sx }) {
+export function Author({ id, overrideText, sx, small }) {
   const author = authors[id]
 
   console.log({ author })
+
+  const width = small ? '24px' : '32px';
+  const height = width;
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
       <Image
         src={author?.avatar || authors.team.avatar}
         alt={author?.name}
-        style={{ height: '32px', width: '32px', borderRadius: '50%' }}
+        style={{ height, width, borderRadius: '50%' }}
       />
       <Heading
         as="h3"
         variant="subheadline"
-        sx={{ color: 'muted', m: 0, fontWeight: 500, ...sx }}
+        sx={{ color: 'muted', m: 0, fontWeight: 500, ...sx, fontSize: small ? 1 : undefined }}
       >
         {overrideText
           ? overrideText
@@ -70,22 +85,36 @@ export function Author({ id, overrideText, sx }) {
   )
 }
 
-export function PostTags({ tags, category }) {
+export function PostTags({ tags, category, filterOnClick }) {
   tags ||= [];
+  if (filterOnClick === undefined) filterOnClick = true;
   return (
     <>
-      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, my: 2 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, my: 2, flexWrap: "wrap" }}>
         {category == 'new' && <Tag>New Feature</Tag>}
         {category == 'improvement' && <Tag>Improvement</Tag>}
         {category == 'newsletter' && <Tag>Newsletter</Tag>}
+        {category == 'news' && <Tag>News</Tag>}
 
-        {tags.includes('ledger') && <Tag>Ledger</Tag>}
-        {tags.includes('security') && <Tag>Security</Tag>}
-        {tags.includes('cards') && <Tag>Cards</Tag>}
-        {tags.includes('receipts') && <Tag>Receipts</Tag>}
-        {tags.includes('invoices') && <Tag>Invoices</Tag>}
-        {tags.includes('donations') && <Tag>Donations</Tag>}
-        {tags.includes('transfers') && <Tag>Transfers</Tag>}
+        {tags.includes('ledger') && <Tag filterOnClick={filterOnClick}>Ledger</Tag>}
+        {tags.includes('security') && <Tag filterOnClick={filterOnClick}>Security</Tag>}
+        {tags.includes('cards') && <Tag filterOnClick={filterOnClick}>Cards</Tag>}
+        {tags.includes('receipts') && <Tag filterOnClick={filterOnClick}>Receipts</Tag>}
+        {tags.includes('invoices') && <Tag filterOnClick={filterOnClick}>Invoices</Tag>}
+        {tags.includes('donations') && <Tag filterOnClick={filterOnClick}>Donations</Tag>}
+        {tags.includes('transfers') && <Tag filterOnClick={filterOnClick}>Transfers</Tag>}
+        {tags.includes('accounting') && <Tag filterOnClick={filterOnClick}>Accounting</Tag>}
+        {tags.includes('receive-money') && <Tag filterOnClick={filterOnClick}>Receive Money</Tag>}
+        {tags.includes('organizations') && <Tag filterOnClick={filterOnClick}>Organizations</Tag>}
+        {tags.includes('notifications') && <Tag filterOnClick={filterOnClick}>Notifications</Tag>}
+        {tags.includes('comments') && <Tag filterOnClick={filterOnClick}>Comments</Tag>}
+        {tags.includes('design') && <Tag filterOnClick={filterOnClick}>Design</Tag>}
+        {tags.includes('documents') && <Tag filterOnClick={filterOnClick}>Documents</Tag>}
+        {tags.includes('perks') && <Tag filterOnClick={filterOnClick}>Perks</Tag>}
+        {tags.includes('api') && <Tag filterOnClick={filterOnClick}>API</Tag>}
+        {tags.includes('reimbursements') && <Tag filterOnClick={filterOnClick}>Reimbursements</Tag>}
+        {tags.includes('spending-controls') && <Tag filterOnClick={filterOnClick}>Spending Controls</Tag>}
+        {tags.includes('transparency-mode') && <Tag filterOnClick={filterOnClick}>Transparency Mode</Tag>}
       </Box>
     </>
   )
@@ -156,7 +185,7 @@ function PostContent({ children, meta, skipAuthor }) {
         sx={{
           flexDirection: ['column', 'column', 'column', 'row'],
           justifyContent: 'space-between',
-          px: 66,
+          px: [3, 3, 66],
           maxWidth: '1400px',
           // mb: 4,
           gap: 5

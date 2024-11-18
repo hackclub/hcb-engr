@@ -1,6 +1,7 @@
 import { posts } from '../content'
 import {
   Box,
+  Button,
   Card,
   Container,
   Divider,
@@ -15,6 +16,9 @@ import Header from '../components/Header'
 import Footer from '@/components/Footer'
 import { useEffect, useState } from 'react'
 import { DisplayProvider } from '@/lib/display'
+import { PostTags } from '@/components/Post'
+import { useQueryParam, StringParam } from 'use-query-params';
+
 
 function PostPreview({ post }) {
   const PostBody = post.component
@@ -26,6 +30,8 @@ function PostPreview({ post }) {
 }
 
 export default function Home() {
+  const [tag, setTag] = useQueryParam('tag', StringParam);
+
   return (
     <>
       <Header />
@@ -33,7 +39,46 @@ export default function Home() {
 
       <Box as="main" sx={{ color: 'text' }} className="post-list">
         <Container as="article" variant="wide" sx={{ pt: 5, pb: [4, 5] }}>
-          {posts.toReversed().map((post, i) => (
+          {tag && <Card variant="sunken" sx={{
+            mx: [3, 3, 66],
+            mb: 5,
+            mt: -32,
+            padding: "20px!important",
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flexDirection: 'row',
+          }}>
+            <Flex sx={{
+              gap: 3,
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'start',
+            }}>
+              <Heading gas="h3" variant="lead" sx={{ margin: "0px!important" }}>
+                Showing posts with tag
+              </Heading>
+              <PostTags tags={[tag]} />
+            </Flex>
+            <Button sx={{
+              padding: 1,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              width: 40,
+              height: 40
+            }} onClick={() => {
+              setTag(undefined)
+            }}>
+              <span style={{
+                transform: "scale(1.8)",
+                lineHeight: 0,
+              }}>
+                ×
+              </span>
+            </Button>
+          </Card>}
+          {posts.filter(post => tag ? (post.meta.tags || []).includes(tag) : true).toReversed().map((post, i) => (
             <>
               <PostPreview key={post.meta.slug} post={post} />
               {i < posts.length - 1 && <Divider my={5} />}
