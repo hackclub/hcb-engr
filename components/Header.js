@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Image, Text, useColorMode } from 'theme-ui'
+import { Box, Container, Heading, Image, Text, useColorMode, useThemeUI } from 'theme-ui'
 import Link from './Link'
 import ColorSwitcher from './color-switcher'
 import { Author, PostTags } from './Post'
@@ -274,6 +274,9 @@ export default function Header({ post }) {
             </Box>
           </Box>
         </Container>
+        <Box sx={{display: 'none'}}>
+          {colorMode}
+        </Box>
       </Box>
     </>
   )
