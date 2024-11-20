@@ -82,6 +82,7 @@ const posts = Object.entries(rawPosts).map(
                 borderRadius: "6px",
                 padding: "12px",
                 width: "100%",
+                overflowX: 'scroll',
                 ...props.style
               }}>
                 <Text sx={{
