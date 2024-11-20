@@ -10,8 +10,7 @@ import {
   Heading,
   Image,
   Link,
-  Text,
-  useColorMode
+  Text
 } from 'theme-ui'
 import Header from '../components/Header'
 import Footer from '@/components/Footer'
@@ -86,7 +85,7 @@ export default function Home() {
               </span>
             </Button>
           </Card>}
-          {posts.map((post, i) => (
+          {posts.filter(post => tag ? (post.meta.tags || []).includes(tag) : true).toReversed().map((post, i) => (
             <>
               <PostPreview key={post.meta.slug} post={post} />
               {i < posts.length - 1 && <Divider my={5} />}
