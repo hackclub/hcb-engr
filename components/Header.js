@@ -218,10 +218,11 @@ export default function Header({ post }) {
                   </Heading>
                   <Box sx={{
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
+                    flexDirection: ["column", "column", "row"],
+                    alignItems: ["start", "start", "center"],
                     justifyContent: "start",
-                    gap: 3
+                    gap: [1, 1, 3],
+                    my: [2, 2, 0]
                   }}>
                     <Heading as="h3" sx={{
                       fontSize: 2,
