@@ -275,6 +275,9 @@ export default function Header({ post }) {
             </Box>
           </Box>
         </Container>
+        <Box sx={{display: 'none'}}>
+          {colorMode}
+        </Box>
       </Box>
     </>
   )
