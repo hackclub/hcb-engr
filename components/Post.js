@@ -98,6 +98,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {category == 'improvement' && <Tag>Improvement</Tag>}
         {category == 'newsletter' && <Tag>Newsletter</Tag>}
         {category == 'news' && <Tag>News</Tag>}
+        {category == 'maintenance' && <Tag>Maintenance</Tag>}
 
         {tags.includes('ledger') && <Tag filterOnClick={filterOnClick}>Ledger</Tag>}
         {tags.includes('security') && <Tag filterOnClick={filterOnClick}>Security</Tag>}
