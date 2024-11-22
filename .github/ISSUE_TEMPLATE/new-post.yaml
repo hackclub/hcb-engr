@@ -1,0 +1,43 @@
+name: New post
+description: Create a new blog post
+title: "[Post] _____"
+labels: ["new post"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: input
+    id: title
+    attributes:
+      label: Post title
+      description: What should this post be called?
+      placeholder: ex. New feature
+    validations:
+      required: true
+  - type: input
+    id: slug
+    attributes:
+      label: Post slug
+      description: What route should the post be accessed by? Use kebab-case 
+      placeholder: ex. my-new-feature
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      description: What category is the post?
+      options:
+        - New Feature
+        - Improvement
+        - Newsletter
+        - News
+        - Maintenance
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: Post content
