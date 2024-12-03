@@ -115,6 +115,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {tags.includes('design') && <Tag filterOnClick={filterOnClick}>Design</Tag>}
         {tags.includes('documents') && <Tag filterOnClick={filterOnClick}>Documents</Tag>}
         {tags.includes('perks') && <Tag filterOnClick={filterOnClick}>Perks</Tag>}
+        {tags.includes('google-workspace') && <Tag filterOnClick={filterOnClick}>Google Workspace</Tag>}
         {tags.includes('api') && <Tag filterOnClick={filterOnClick}>API</Tag>}
         {tags.includes('reimbursements') && <Tag filterOnClick={filterOnClick}>Reimbursements</Tag>}
         {tags.includes('spending-controls') && <Tag filterOnClick={filterOnClick}>Spending Controls</Tag>}
