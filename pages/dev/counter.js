@@ -4,16 +4,20 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react';
 import { Box, Container, Flex, Heading, useColorMode } from 'theme-ui'
 
-export default function Counter({ untilYesterday, lastDay, startTime }) {
-    const [transactionAmount, setTransactionAmount] = useState(untilYesterday);
+function currentAmount(startTime, untilYesterday, lastDay) {
+    const elapsed = Date.now() - startTime;
+    const fullDay = 1000 * 60 * 60 * 24;
+    const additional = elapsed / fullDay * lastDay;
+
+    return untilYesterday + additional;
+}
+
+export default function Counter({ untilYesterday, lastDay, startTime, initialValue }) {
+    const [transactionAmount, setTransactionAmount] = useState(initialValue);
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const elapsed = Date.now() - startTime;
-            const fullDay = 1000 * 60 * 60 * 24;
-            const additional = elapsed / fullDay * lastDay;
-
-            setTransactionAmount(transactionAmount + additional);
+            setTransactionAmount(currentAmount(startTime, untilYesterday, lastDay));
         }, 50);
         return () => clearInterval(interval);
     }, []);
@@ -61,7 +65,8 @@ export async function getServerSideProps() {
         props: {
             untilYesterday,
             lastDay,
-            startTime
+            startTime,
+            initialValue: currentAmount(startTime, untilYesterday, lastDay)
         }
     }
 }
