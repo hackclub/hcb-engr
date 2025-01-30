@@ -32,6 +32,14 @@ function PostPreview({ post }) {
 export default function Home() {
   const [tag, setTag] = useQueryParam('tag', StringParam);
 
+  useEffect(() => {
+    if (!localStorage.getItem("initialVisit")) {
+      localStorage.setItem("initialVisit", Date.now());
+    }
+
+    localStorage.setItem("lastPostVisit", posts.toReversed()[0].meta.slug);
+  }, []);
+
   return (
     <>
       <Header />
