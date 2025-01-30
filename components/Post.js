@@ -61,8 +61,6 @@ const PostContext = createContext()
 export function Author({ id, overrideText, sx, small }) {
   const author = authors[id]
 
-  console.log({ author })
-
   const width = small ? '24px' : '32px';
   const height = width;
 

@@ -41,6 +41,12 @@ export default function Post({ slug }) {
     timeZone: "Etc/UTC"
   });
 
+  useEffect(() => {
+    if (!localStorage.getItem("initialVisit")) {
+      localStorage.setItem("initialVisit", Date.now());
+    }
+  }, []);
+
   return (
     <DisplayProvider display="detail">
       <Head>
