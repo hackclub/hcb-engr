@@ -1,0 +1,21 @@
+import post, { Author, Preview } from '@/components/Post'
+
+export default post({
+    title: '🔍 Track where donors are coming from',
+    slug: 'track-donation-source',
+    category: 'new',
+    authors: ['ian'],
+    cover: donationReferrerInformation,
+    date: new Date('2025-1-29')
+})
+
+import donationReferrerInformation from "./donationReferrerInformation.png";
+
+
+HCB's donation page is a great way to raise money for your organization. With one click, you can share a link to your donation page on social media, in emails, or on your website. It's incredibly versatile, but how do you know which platforms work?
+
+Starting today, you can track which website referred your donors, and, for more granular insights, the [UTM parameters](https://www.spinutech.com/digital-marketing/analytics/conversion/what-are-utm-codes-utm-tracking-explained) of the link they clicked. This data is available on the transaction details page for all donations with referrer data.
+
+<Image src={donationReferrerInformation} />
+
+Hopefully this feature will help you understand where your donors are coming from and how to better reach them in the future!
