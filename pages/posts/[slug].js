@@ -4,6 +4,7 @@ import { Author, PostTags } from '@/components/Post'
 import { posts } from '@/content/index'
 import { DisplayProvider } from '@/lib/display'
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { Box, Card, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 
 const relatedPosts = post => {

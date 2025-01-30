@@ -6,7 +6,7 @@ import theme from '@hackclub/theme'
 import { ThemeProvider } from 'theme-ui'
 import '../styles/global.css'
 import Head from 'next/head'
-import { QueryParamProvider } from 'use-query-params'
+import { QueryParamProvider } from 'use-query-params';
 import NextAdapterApp from 'next-query-params/app';
 
 export default class App extends NextApp {
