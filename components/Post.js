@@ -118,6 +118,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {tags.includes('reimbursements') && <Tag filterOnClick={filterOnClick}>Reimbursements</Tag>}
         {tags.includes('spending-controls') && <Tag filterOnClick={filterOnClick}>Spending Controls</Tag>}
         {tags.includes('transparency-mode') && <Tag filterOnClick={filterOnClick}>Transparency Mode</Tag>}
+        {tags.includes('power-users') && <Tag filterOnClick={filterOnClick}>Power Users</Tag>}
       </Box>
     </>
   )
@@ -320,7 +321,7 @@ export function Preview({ children, skipLink }) {
 
 /**
  * Creates a post component with the given metadata.
- * 
+ *
  * @param {PostMeta} meta - The metadata for the post.
  * @returns {function} A component that renders the post.
  */
