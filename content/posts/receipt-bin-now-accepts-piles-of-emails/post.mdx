@@ -1,0 +1,37 @@
+import post from '@/components/Post'
+
+export default post({
+  title: '✉️ Receipt bin now accepts piles of emails!',
+  slug: 'receipt-bin-now-accepts-piles-of-emails', // make sure this matches the directory name
+  category: 'improvement', // one of "new", "newsletter", "improvement", or "news"
+  tags: ["receipts", "power-users"], // an array of tags
+  authors: ["nora"], // an array of authors (see /content/authors)
+  date: new Date("2025-02-24"),
+  description: "This is a new post" // a short description of the post for opengraph embeds
+})
+
+If you're anything like me, the number in the little red dot next to your receipts tab gets a little too high sometimes, which presents a problem:
+how do I make that number lower so our bookkeeper isn't sad at month-end close while still putting in a minimum of effort because I'm lazy?
+
+Receipt Bin is a game-changer for this – if you're not familiar with it yet please [go read about it](/posts/receipt-bin-280777), I'll wait...
+(the pitch: throw all your receipts in here and then worry about attaching them to transactions later!)
+
+My one gripe with it is that bringing in a whole inbox-ful of automatically generated receipts was always a task-and-a-half due to having to forward them one.. by one... by one..... as in the following dramatic reenactment:
+
+import old_way from "./old_way.gif";
+import the_new_hotness from "./the_new_hotness.gif";
+
+<Image src={old_way} alt={"gmail opening a bunch of forward windows that need to be individually dealt with"} />
+
+No more! This annoyed me enough that I fixed it:
+
+Now, any `.eml` attachments sent to your Receipt Bin inbox will be converted to PDF receipts the same way individual emails are.
+
+In Gmail you can do this by selecting multiple emails, right-clicking, and clicking "Forward as attachment".
+
+<Image src={the_new_hotness} alt={"forwarding multiple emails as .eml attachments in gmail"} />
+
+Most of the time they're even automatically matched to transactions!
+This means I can spend less of my time shuffling receipts around and more time <strike>spending money</strike>doing things that actually benefit Hack Clubbers.
+
+I hope this speeds up your day too! Thanks for reading and happy HCBing :-D

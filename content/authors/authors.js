@@ -18,6 +18,7 @@ import ruien from './ruien.jpg'
 import aram from './aram.jpg'
 import zoya from './zoya.jpg'
 import ben from './ben.jpg'
+import nora from './nora.png'
 
 
 export default {
@@ -129,5 +130,10 @@ export default {
     name: "Sean",
     role: "Operations Contributor",
     avatar: team
+  },
+  nora: {
+    name: "Nora",
+    role: "not an HCB engineer but plays one on TV",
+    avatar: nora
   }
 }
