@@ -1,0 +1,142 @@
+import post, { Author, Preview } from '@/components/Post'
+
+export default post({
+  title: '📣 HCB September Newsletter',
+  slug: 'newsletter-2024-september',
+  category: 'newsletter',
+  authors: ['dylan'],
+  cover: hcbSpotlight,
+  date: new Date('2024-9-21')
+})
+
+<Preview>
+I realized last time I didn't introduce myself! My name is Dylan, I'm the Product Manager here at HCB. This means in addition to directly supporting organizations on HCB, I get to work with our incredible engineering team to design new features.
+
+Before joining HCB late last year, I was heavily involved in climate justice organizing at New York University. I helped start the Sunrise Movement chapter on campus and pushed the university administration to stop investing in the fossil fuel industry.
+
+If you ever have feature requests or ideas on how to make HCB better, let me know!
+</Preview>
+
+
+I realized last time I didn't introduce myself! My name is Dylan, I'm the Product Manager here at HCB. This means in addition to directly supporting organizations on HCB, I get to work with our incredible engineering team to design new features.
+
+Before joining HCB late last year, I was heavily involved in climate justice organizing at New York University. I helped start the Sunrise Movement chapter on campus and pushed the university administration to stop investing in the fossil fuel industry.
+
+If you ever have feature requests or ideas on how to make HCB better, let me know!
+
+<Author id="dylan" overrideText="Dylan" />
+
+⛵What's been shipping?
+----------------------
+
+### 💫 Sleek new footer & support button
+
+* * * * *
+
+We've put all the essential support links into a single support button at the bottom right of your screen. With just a click, you can contact us, leave feedback, or access our API docs and brand guidelines.
+
+Also, be sure to visit our Help Center for tips, guides, and answers to FAQs---it's the best way to make the most of our features.
+
+import footerAndSupportButton from "./footerAndSupportButton.png";
+
+<Image src={footerAndSupportButton} />
+
+<Author id="manu" overrideText="Manu" />
+
+### ✨ AI-powered transaction memos
+
+* * * * *
+
+Transparency Mode has been one of HCB's flagship features for years. It revolutionized nonprofit financial transparency and allowed donors and the public to see how an organization utilizes funds. However, we've found that showcasing every transaction can sometimes mean extra housekeeping work for teams to keep the ledger tidy.
+
+That's why we're excited to announce AI-powered memos for transactions!
+
+Now, with 1-click, you can generate a transaction memo summarizing the receipt for any transaction. It's pretty simple:
+
+1.  Upload a receipt to a transaction.
+
+1.  Click the purple AI button to generate a memo.
+
+1.  Accept the suggestions by clicking the checkmark or pressing [enter].
+
+![GIF showing how to use AI memos](https://d3b9kr64nievew.cloudfront.net/cm0fifigk009wtkga0yoe0xdd/cm0fihilh00a7m30fcemnwej7.gif)
+
+You'll also notice that the receipt sidebar now includes some extracted information that provides a glanceable overview of the receipt's contents.
+
+import receiptSidebar from "./receiptSidebar.png";
+
+<Image src={receiptSidebar} />
+
+As usual, we want to hear what you think!
+
+<Author id="ian" overrideText="Ian" />
+
+### 💝 Simple, secure one-click donations
+
+* * * * *
+
+As your fiscal sponsor, our mission is to empower *your mission*. This means helping you collect the donations that keep the lifeblood of your organization running.
+
+As a result, we're introducing donations powered by Link. Link autofills your donors' payment details so they can easily complete their donation.
+
+These simple, secure one-click payments are helping organizations grow their funds.
+
+import link from "./link.png";
+
+<Image src={link} />
+
+In addition to Link, we support Apple Pay, Google Pay, and good old-fashioned cards! 💳
+
+<Author id="gary" overrideText="Gary" />
+
+### ⚡ We've sped up ACH transfers from three days to one day
+
+* * * * *
+
+All ACH transfers sent from HCB are now processed same-day!
+
+That means, the moment an ACH is approved by HCB, it'll arrive that day (view the timing specifics). In most cases, this should cut the waiting time for an ACH from three business days to one.
+
+import achTransfersIamSpeed from "./achTransfersIamSpeed.png";
+
+<Image src={achTransfersIamSpeed} />
+
+<Author id="sam" overrideText="Sam" />
+
+### 🎉 Comment reactions are here!
+
+* * * * *
+
+You can now react to comments 😱! Show your thoughts instantly with a tap---whether it's a thumbs up, heart, or something else. Give it a try and add some fun to your conversations!
+
+![Comment reactions in action](https://d3b9kr64nievew.cloudfront.net/cm0fifigk009wtkga0yoe0xdd/cm0figtv5019m28raxqy1ydcp.gif)
+
+<Author id="manu" overrideText="Manu" />
+
+🌟 HCB Spotlight
+----------------
+
+Exciting times are ahead for girls and nonbinary high school students at Hack Club.
+
+Hack Club HQ is running four events in the next few months to empower girls and nonbinary students who code! All these events are running on HCB, using Transparency Mode. Each hackathon kicks off with a dinner featuring trailblazing women in tech.\
+To learn more about these events and how to get involved, click here.
+
+import hcbSpotlight from "./hcbSpotlight.png";
+
+<Image src={hcbSpotlight} />
+
+Golden hackathon, Bay Area, Sept 28th: workshops on Data Science, 3D Printing, and Web Development, with participants from Mission YoungArts, Home Away from Homelessness, and local schools.
+
+Luna hackathon, New York City's Civic Hall, October 5th, with Girls Who Code on Web Development, Project Pitching, and Video Game Development with Sprig.
+
+Celestial hackathon, Toronto, on October 19th at Shopify, will feature sessions on building PCBs, 3D modeling, and AI.
+
+Ascend summit, Los Angeles, in mid-November, bringing together 50 girls and non-binary Hack Club leaders from around the world to code and meet mentors.
+
+* * * * *
+
+If you have feedback or feature requests, I'd love to hear them. Let me know your number one complaint about HCB by replying to this email.
+
+All the best,
+
+Dylan & the HCB Team

@@ -82,6 +82,7 @@ const posts = Object.entries(rawPosts).map(
                 borderRadius: "6px",
                 padding: "12px",
                 width: "100%",
+                overflowX: 'scroll',
                 ...props.style
               }}>
                 <Text sx={{
@@ -96,7 +97,7 @@ const posts = Object.entries(rawPosts).map(
               code: props => <Text as="span" color="blue" bg="sheet" sx={{ borderRadius: 6, px: 1 }}><code style={{
                 fontSize: "16px",
               }}>{props.children}</code></Text>,
-              a: props => <Link {...props} />,
+              a: props => <Link target="_blank" {...props} />,
               p: props => <Text as="p" {...props} sx={{ fontSize: 2, my: 3, ":first-child": { mt: 0 } }} />
             }}
             {...props}

@@ -2,9 +2,10 @@ import Footer from '@/components/Footer'
 import Header from '@/components/Header'
 import { authors, posts } from '@/content'
 import Head from 'next/head'
-import { Box, Container, Flex, Heading } from 'theme-ui'
+import { Box, Container, Flex, Heading, useColorMode } from 'theme-ui'
 
 export default function Dashboard() {
+    const [colorMode, setColorMode] = useColorMode();
     return (
         <>
             <Head>
@@ -28,7 +29,8 @@ export default function Dashboard() {
                         posts: {
                             count: posts.length,
                             urls: posts.map(post => `https://bank.engineering/${post.meta.slug}`)
-                        }
+                        },
+                        colorMode
                     }, null, 4)}</code></pre>
                 </Container>
             </Box>

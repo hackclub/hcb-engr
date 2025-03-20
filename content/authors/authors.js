@@ -11,7 +11,7 @@ import caleb from './caleb.jpg'
 import liv from './liv.jpg'
 import ella from './ella.jpg'
 import kunal from './kunal.jpg'
-import gary from './gary.jpg'
+import gary from './gary.png'
 import tinu from './tinu.png'
 import ian from './ian.png'
 import ruien from './ruien.jpg'
@@ -32,6 +32,7 @@ export default {
   },
   dylan: {
     name: 'Dylan Wahbe',
+    role: "Account Manager",
     avatar: dylan
   },
   manu: {
@@ -41,7 +42,7 @@ export default {
   },
   michael: {
     name: "Michael",
-    role: "Engineer",
+    role: "Operations Lead",
     avatar: michael
   },
   theo: {
