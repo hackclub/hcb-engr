@@ -1,0 +1,93 @@
+import post, { Author, Preview } from '@/components/Post'
+
+export default post({
+  title: '📣 HCB October Newsletter',
+  slug: 'newsletter-2024-october',
+  category: 'newsletter',
+  authors: ['dylan'],
+  cover: lcoy,
+  date: new Date('2024-10-21')
+})
+
+<Preview>
+🎃 Spooky finances! It's that time of year! The HCB dashboard has been taken over by witches and ghosts. Don't worry though, if you ever get scared you can always disable this theme in your Settings.
+
+</Preview>
+
+🎃 Spooky finances!
+===================
+
+It's that time of year! The HCB dashboard has been taken over by witches and ghosts. Don't worry though, if you ever get scared you can always disable this theme in your Settings.
+
+<Author id="dylan" overrideText="Dylan" />
+
+☎️ HCB Help Center
+------------------
+
+HCB officially has a Help Center! Over the past few weeks, we have been adding articles to it covering all aspects of HCB. Check it out if you ever have a question! You can access it here or by click on the blue Support Button on HCB.
+
+⛵What's been shipping?
+----------------------
+
+### 🔒 Keep your HCB account secure with two-factor authentication
+
+* * * * *
+
+Looking for a little bit of extra security? You can now turn on two-factor authentication for your account:
+
+import twoFactorAuth from "./twoFactorAuth.png";
+
+<Image src={twoFactorAuth} />
+
+That'll prompt you for two authentication factors each time you log in, whether it's a hardware security key, a login code sent to your email/phone, or a time-based one time password.
+
+You know what they say about 2FA, you may find it mildly annoying but baddies find it infuriating. Ok, no one says that but you get the point.
+
+<Author id="sam" overrideText="Sam" />
+
+### 🔁 Seamlessly switch between your organizations
+
+* * * * *
+
+Are you a part of multiple organizations on HCB? Simply click on your organization's title to navigate between them! 🔥
+
+import organizationSwitcher from "./organizationSwitcher.png";
+
+<Image src={organizationSwitcher} />
+
+<Author id="manu" overrideText="Manu" />
+
+### ✔︎ Verifying your account & routing number?
+
+* * * * *
+
+Are you trying to manually link your organization's account & routing numbers with a 3rd party service? Sometimes these services will ask for a bank account letter that proves you have access to your account number.
+
+Luckily for you, sitting right on your documents page is a verification letter you can share. ✨✅
+
+This handy one-pager allows organizations on HCB to prove they have access to their account & routing numbers.
+
+import verificationLetter from "./verificationLetter.png";
+
+<Image src={verificationLetter} />
+
+<Author id="manu" overrideText="Manu" />
+
+🌟 HCB Spotlight
+----------------
+
+LCOY 2024, a UN sponsored event, was recently held in Arizona. LCOY (Local Conference of Youth) is a youth-led, youth-organized, weekend long conference which brings together over 125 youth delegates from across the country--- carefully selected for their leadership in the climate movement--- to learn, network, collaborate, and work together to ensure that young people's demands about climate change are represented at the national and international level.
+
+The whole event ran on HCB and you can view their finances here.
+
+import lcoy from "./lcoy.png";
+
+<Image src={lcoy} />
+
+* * * * *
+
+If you have feedback or feature requests, I'd love to hear them. Let me know your number one complaint about HCB by replying to this email.
+
+All the best,
+
+Dylan & the HCB Team

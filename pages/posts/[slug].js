@@ -4,6 +4,7 @@ import { Author, PostTags } from '@/components/Post'
 import { posts } from '@/content/index'
 import { DisplayProvider } from '@/lib/display'
 import Head from 'next/head'
+import { useEffect } from 'react'
 import { Box, Card, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 
 const relatedPosts = post => {
@@ -24,7 +25,7 @@ const relatedPosts = post => {
 
   relatedPosts.sort((a, b) => b.score - a.score);
 
-  console.log({ relatedPosts })
+  // console.log({ relatedPosts })
 
   return relatedPosts.slice(0, 3).map(({ post }) => post);
 }
@@ -33,19 +34,29 @@ export default function Post({ slug }) {
   const post = posts.find(post => post.meta.slug === slug)
   const PostBody = post.component
 
+  console.log("FOOBAR", post.meta.primaryImage)
+  const date = post.meta.date.toLocaleDateString('en-us', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    timeZone: "Etc/UTC"
+  });
+
+  useEffect(() => {
+    if (!localStorage.getItem("initialVisit")) {
+      localStorage.setItem("initialVisit", Date.now());
+    }
+  }, []);
+
   return (
     <DisplayProvider display="detail">
       <Head>
         <title>{post.meta.title}</title>
         <meta
           property='og:description'
-          content={`${post.meta.date.toLocaleDateString('en-us', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-            timeZone: "Etc/UTC"
-          })}`}
+          content={post.meta.description ? `${post.meta.description} • ${date}` : date}
         />
+        {post.meta.primaryImage ? <meta property="og:image" content={"https://bank.engineering" + post.meta.primaryImage.src} /> : null}
 
       </Head>
       <Header post={post} />
@@ -137,7 +148,7 @@ export default function Post({ slug }) {
 }
 
 export async function getStaticPaths() {
-  console.log(posts);
+  // console.log(posts);
 
 
   const paths = posts.map(post => ({
@@ -146,7 +157,7 @@ export async function getStaticPaths() {
     }
   }))
 
-  console.log(paths)
+  // console.log(paths)
 
   return {
     paths,

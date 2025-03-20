@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react'
 import { DisplayProvider } from '@/lib/display'
 import { PostTags } from '@/components/Post'
 import { useQueryParam, StringParam } from 'use-query-params';
-
+import Head from 'next/head'
 
 function PostPreview({ post }) {
   const PostBody = post.component
@@ -32,10 +32,25 @@ function PostPreview({ post }) {
 export default function Home() {
   const [tag, setTag] = useQueryParam('tag', StringParam);
 
+  useEffect(() => {
+    if (!localStorage.getItem("initialVisit")) {
+      localStorage.setItem("initialVisit", Date.now());
+    }
+
+    localStorage.setItem("lastPostVisit", posts.toReversed()[0].meta.slug);
+  }, []);
+
   return (
     <>
       <Header />
-      <title>HCB Blog</title>
+      <Head>
+        <title>HCB Blog</title>
+        <meta
+          property="og:image"
+          content="https://bank.engineering/og-v1.png"
+        />
+      </Head>
+
 
       <Box as="main" sx={{ color: 'text' }} className="post-list">
         <Container as="article" variant="wide" sx={{ pt: 5, pb: [4, 5] }}>

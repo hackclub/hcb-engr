@@ -53,12 +53,13 @@ const PostContext = createContext()
  * @property {Array.<"ledger"|"security"|"cards"|"receipts"|"invoices"|"donations"|"transfers"|"accounting"|"receive-money"|"organizations"|"notifications"|"comments"|"design"|"documents"|"perks"|"api"|"reimbursements"|"spending-controls"|"transparency-mode">} tags - The tags of the post
  * @property {string} slug - The slug of the post
  * @property {string} slackLink - A link to the corresponding post on Slack
+ * @property {string} headwayUrl - A link to the corresponding post on Slack
+ * @property {string} primaryImage - The primary image for the post
+ * @property {string} description - A description of the post for SEO
  */
 
 export function Author({ id, overrideText, sx, small }) {
   const author = authors[id]
-
-  console.log({ author })
 
   const width = small ? '24px' : '32px';
   const height = width;
@@ -95,6 +96,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {category == 'improvement' && <Tag>Improvement</Tag>}
         {category == 'newsletter' && <Tag>Newsletter</Tag>}
         {category == 'news' && <Tag>News</Tag>}
+        {category == 'maintenance' && <Tag>Maintenance</Tag>}
 
         {tags.includes('ledger') && <Tag filterOnClick={filterOnClick}>Ledger</Tag>}
         {tags.includes('security') && <Tag filterOnClick={filterOnClick}>Security</Tag>}
@@ -111,6 +113,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {tags.includes('design') && <Tag filterOnClick={filterOnClick}>Design</Tag>}
         {tags.includes('documents') && <Tag filterOnClick={filterOnClick}>Documents</Tag>}
         {tags.includes('perks') && <Tag filterOnClick={filterOnClick}>Perks</Tag>}
+        {tags.includes('google-workspace') && <Tag filterOnClick={filterOnClick}>Google Workspace</Tag>}
         {tags.includes('api') && <Tag filterOnClick={filterOnClick}>API</Tag>}
         {tags.includes('reimbursements') && <Tag filterOnClick={filterOnClick}>Reimbursements</Tag>}
         {tags.includes('spending-controls') && <Tag filterOnClick={filterOnClick}>Spending Controls</Tag>}

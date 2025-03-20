@@ -96,9 +96,9 @@ export default function Header({ post }) {
             'sheet',
             'sheet',
             'sheet',
-            colorMode == 'dark'
-              ? 'sheet'
-              : 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+            colorMode == 'light'
+              ? 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+              : 'sheet'
           ],
           color: 'text',
           position: 'relative'
@@ -138,7 +138,7 @@ export default function Header({ post }) {
                 'none',
                 'none',
                 'none',
-                colorMode == 'dark' ? 'block' : 'none'
+                colorMode == 'light' ? 'none' : 'block'
               ]
             }}
           />
@@ -151,9 +151,9 @@ export default function Header({ post }) {
               'sheet',
               'sheet',
               'sheet',
-              colorMode == 'dark'
-                ? 'sheet'
-                : 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+              colorMode == 'light'
+                ? 'linear-gradient(90deg, rgba(249,250,252,1) 27%, rgba(221,229,237,1) 80%)'
+                : 'sheet'
             ],
             ...(concise
               ? {
@@ -218,10 +218,11 @@ export default function Header({ post }) {
                   </Heading>
                   <Box sx={{
                     display: "flex",
-                    flexDirection: "row",
-                    alignItems: "center",
+                    flexDirection: ["column", "column", "row"],
+                    alignItems: ["start", "start", "center"],
                     justifyContent: "start",
-                    gap: 3
+                    gap: [1, 1, 3],
+                    my: [2, 2, 0]
                   }}>
                     <Heading as="h3" sx={{
                       fontSize: 2,
@@ -274,6 +275,9 @@ export default function Header({ post }) {
             </Box>
           </Box>
         </Container>
+        <Box sx={{display: 'none'}}>
+          {colorMode}
+        </Box>
       </Box>
     </>
   )
