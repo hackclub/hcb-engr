@@ -1,0 +1,36 @@
+.post .post-content img {
+  max-width: 100%;
+  width: auto;
+  max-height: 400px;
+  height: auto;
+}
+
+.post-list
+  .post
+  .post-content:has(.post-preview)
+  > *:not(.post-preview):not(.post-link) {
+  display: none;
+}
+
+.post-preview {
+  display: none;
+}
+
+.post-list .post-preview {
+  display: block;
+}
+
+.post .post-content .post-link {
+  display: none;
+}
+
+.post-list .post .post-content .post-link {
+  display: flex;
+}
+
+:root {
+  scroll-behavior: smooth;
+}
+:target {
+  scroll-margin-top: 100px;
+}

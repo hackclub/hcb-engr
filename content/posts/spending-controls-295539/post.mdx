@@ -1,0 +1,69 @@
+import post from '@/components/Post';
+export default post({
+  title: "💳 Spending Controls",
+  slug: "spending-controls-295539",
+  category: "preview",
+  tags: ["spending-controls"],
+  authors: ["ben"],
+  date: new Date("2024-07-16T16:30:00Z"),
+  headwayUrl: "https://changelog.hcb.hackclub.com/spending-controls-295539" // published: true
+});
+
+In the dark days of HCB, inviting people to your organization was always a binary risk assessment - "do I give this person unfettered access to everything, or nothing at all?"
+
+Once we realized this was Suboptimal And A Bit Dangerous™️, we started to think about operational security from users' perspectives more carefully.
+
+[User roles](https://hcb.hackclub.com/roles) was step one. This introduced predetermined permission sets to control users' access in an organization.
+
+Today, **we're introducing spending controls**. This allows managers of HCB organizations to impose a finer level of control on how much money a member can spend.
+
+<br/>
+
+# Here is a rundown of how to use it:
+
+To get to a team member's spending controls page, visit the Team page and click on the `$` icon next to their name.
+
+
+import headway_fionahackworthusercardpng from "./headway_fionahackworthusercardpng_3ljgv8lh.png";
+      
+<Image src={headway_fionahackworthusercardpng} alt={"fiona-hackworth-user-card.png"} />
+
+
+A team member's spending controls page gives you consolidated details of how they're using their cards.
+
+
+import headway_fionahackworthspendingpng from "./headway_fionahackworthspendingpng_geox5b7n.png";
+      
+<Image src={headway_fionahackworthspendingpng} alt={"fiona-hackworth-spending.png"} />
+
+When controls are disabled, a member can spend any amount of money with their cards. (Since they're not managers, so still can't transfer via ACH, check, HCB transfer, etc.)
+
+### Now, let's enable spending controls for Fiona.
+
+import headway_fionaspendingenabledpng from "./headway_fionaspendingenabledpng_205b7gpn.png";
+      
+<Image src={headway_fionaspendingenabledpng} alt={"fiona-spending-enabled.png"} />
+
+
+With spending controls enabled, new transactions on Fiona's card will be approved/declined based on Fiona's balance. Since we haven't given her an allowance yet, her balance is zero! (as seen above)
+
+### Let's give Fiona an allowance of $2,500!
+_Hint: click the `New` button on the top right._
+
+
+import headway_fionaspendingenabledwithcontrolpng from "./headway_fionaspendingenabledwithcontrolpng_n7rpjpz.png";
+      
+<Image src={headway_fionaspendingenabledwithcontrolpng} alt={"fiona-spending-enabled-withcontrol.png"} />
+
+Now that I've given Fiona an allowance, she can spend it with her card! This $2,500 didn't leave the organization's balance when I created an allowance. Instead, both balances will decrease when she makes a purchase.
+
+You should probably also know that these allowances are not time-dependent. They don't expire, and they do not recur (it's not a weekly/monthly limit).
+
+
+As a convenience, you can also choose to enable spending controls and set an initial amount when you invite someone to your organization.
+
+
+import headway_apng from "./headway_apng_hp5cje4r.png";
+      
+<Image src={headway_apng} alt={"a.png"} />
+

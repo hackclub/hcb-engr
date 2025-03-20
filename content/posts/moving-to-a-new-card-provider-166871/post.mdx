@@ -1,0 +1,29 @@
+import post from '@/components/Post';
+export default post({
+  title: "Moving to a new card provider",
+  slug: "moving-to-a-new-card-provider-166871",
+  category: "improvement",
+  tags: ["cards", "news"],
+  authors: ["max"],
+  date: new Date("2020-09-02T15:36:39Z"),
+  headwayUrl: "https://changelog.hcb.hackclub.com/moving-to-a-new-card-provider-166871" // published: true
+});
+
+_This post is to explain the background details of our switch to Stripe Issuing. Accounts that need action to make the switch will receive an email._
+
+Emburse cards have been a feature since one of the earliest versions of Hack Club Bank, allowing any team member to spend money with a debit card without dealing with reimbursements. While that’s been amazing, there have been a few trade-offs with using Emburse:
+
+1. **Separate bank & card balances.** This was the big one. Emburse cards spent money from an Emburse balance ("card balance" in the Bank interface). That meant after you raised money, you couldn’t immediately spend it. The invoice/donation needed to deposit, you needed to transfer the money to your card, wait 3-5 business days, then you could spend your money. Ideally, moving money should take only the 3-5 seconds of fishing your card out of your pockets & tapping at the register.
+2. **A separate website login to remember.** We tried to hide emburse.com from as much of the app as possible, but at the end of the day Emburse was built for people to use directly. To issue a card to someone, we had to create an Emburse account. To activate your card, you had to sign into emburse.com.
+
+These trade-offs made sense when we first started, but lots of details have changed in the last 2 years. Hack Club Bank has grown by…I started doing the math on this, but the comparison is stupid–our first year on Emburse has less than $1k spent per month, last week Bank users spent $20k through their cards. Emburse has been acquired (by a company that renamed to Emburse) & have shifted their product features.
+
+Recently Emburse announced they’d be removing the card budgeting feature Bank currently relies on. If we stayed on Emburse the new flow would require organizers to request funds for a purchase, staff (Michael / Chaleb) to approve the purchase amount, then the card could make the transaction. Emburse was super gracious about the change, delaying the budget feature removal long enough for us to switch to another platform.
+
+The card alternative we’ve eyed for awhile is Stripe Issuing, but it was in private beta we couldn’t access when we built Hack Club Bank. At the time of writing, we’ve got a private version of Stripe Issuing cards running on Hack Club Bank (only available to admins) to make sure our new system works. I’m happy to say it improves many of the previous issues with cards:
+
+1. **You’ll have 1 true balance:** this should explain itself. Donations go into your account balance, your card spends from your account balance, no more transfers & maintaining two balances.
+2. **All built into Bank:** no more Emburse account login, just login to Bank with your email.
+3. **More card control**: ever forget the billing zip code of your Emburse card was `90069`? or was it `60096`? I don’t even remember it. Now we’ve got way more control over cards through the Stripe Issuing API. You can use your own card billing address instead of Hack Club’s, we can make keeping track of receipts way easier, we can let you spend money without waiting for a physical card to ship. The Stripe Issuing API is way more flexible, and we’re working on a bunch of ways to let you spend money more easily.
+
+This is obviously a big change, and if you have any questions/comments please let us know either by reaching out to bank@hackclub.com or posting in the `#bank` channel on Slack.

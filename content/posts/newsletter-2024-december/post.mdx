@@ -1,0 +1,129 @@
+import post, { Author, Preview } from '@/components/Post'
+
+export default post({
+  title: '📣 HCB December Newsletter',
+  slug: 'newsletter-2024-december',
+  category: 'newsletter',
+  authors: ['dylan'],
+  cover: newAppleWalletLook,
+  date: new Date('2024-12-10')
+})
+
+<Preview>
+For those that celebrate, I hope you had a wonderful Thanksgiving🦃 and restful break.
+
+In addition to some amazing ships, we are launching the HCB Blog! More details below.
+
+I hope everyone has a wonderful holiday break and see you in the new year!
+
+</Preview>
+
+For those that celebrate, I hope you had a wonderful Thanksgiving🦃 and restful break.
+
+In addition to some amazing ships, we are launching the HCB Blog! More details below.
+
+I hope everyone has a wonderful holiday break and see you in the new year!
+
+<Author id="dylan" overrideText="Dylan" />
+
+📝Introducing the HCB Blog!
+---------------------------
+
+Today we're launching a new way to stay up-to-date on HCB: our new blog.
+
+For as long as I can remember, HCB has been using Headway to announce product updates and changes to users, but over time our needs have shifted. Along with changelog updates, we want to share more content online, like engineering deep-dives, our monthly newsletters, and more.
+
+With this change, all of our posts are now open source and available on GitHub as well.
+
+We're excited to share more with you in the future. Stay tuned!
+
+<Author id="ian" overrideText="Ian" />
+
+⛵What's been shipping?
+----------------------
+
+### 🍎 Fresh & crisp Apple Wallet card design
+
+* * * * *
+
+For a long time, HCB cards appeared as a mysterious, dark, unbranded card in your Apple Wallet.
+
+import oldAppleWalletLook from "./oldAppleWalletLook.png";
+
+<Image src={oldAppleWalletLook} />
+
+Today, we're excited to announce that it's getting a new look! Some people might say it's fresh & crisp, just like a juicy apple 🍎. Enjoy!
+
+import newAppleWalletLook from "./newAppleWalletLook.png";
+
+<Image src={newAppleWalletLook} />
+
+Thanks to Ian and Sam for the design work!
+
+<Author id="gary" overrideText="Gary" />
+
+
+### 🌏 International bank transfers are here
+
+* * * * *
+
+Exciting news for organizations doing work outside the US! HCB now supports sending money to overseas bank accounts via an international wire:
+
+import internationalBankTransfers from "./internationalBankTransfers.png";
+
+<Image src={internationalBankTransfers} />
+
+
+To send an international wire, you'll need your recipient's bank's SWIFT code and account number as well as some country-specific information. Once you've got that, it's just like sending an ACH transfer to a US bank account on HCB.
+
+Unfortunately, wires are expensive to send. Our partner bank charges us $25 per wire; therefore, to keep HCB sustainable without passing this fee onto you, each wire sent must be at least $500. We've waived this requirement for organizations that have raised over $50k.
+
+If you have any feedback on this wires feature, we'd love to hear from you! We're always looking to improve our product, and wires has been a difficult feature to polish.
+
+<Author id="sam" overrideText="Sam" />
+
+### 💌 Let us know the best way to get in touch
+
+* * * * *
+
+When we need help from you, we want to make sure we're reaching out to the right people.
+
+By default, we'll email everyone who is a part of your team on HCB. However, if you have a shared team email or would prefer for us to reach out to a specific email, you can now let us know.
+
+import contactEmailScreenshot from "./contactEmailScreenshot.png";
+
+<Image src={contactEmailScreenshot} />
+
+<Author id="sam" overrideText="Sam" />
+
+🌟 HCB Spotlight
+----------------
+
+* * * * *
+
+import highSeas from "./highSeas.png";
+
+<Image src={highSeas} />
+
+Hack Club launched High Seas! This is the largest Hack Club event ever, having already reached more than 1.5 million teenagers around the world. High Seas empowers teenagers to build projects, share them, and collect *Doubloons* which can be redeemed for amazing prizes.
+
+Like all Hack Club initiatives, High Seas is open source and has transparent finances with HCB!
+
+### NOTE: Exclusively for teenagers! Adults, hide your eyes!
+
+Until January 31st, we will send you free stuff just for coding. Here's how it works:
+
+1\. BUILD! Ship personal coding projects to earn Doubloons\
+2\. BATTLE! Ships compete for bonuses in peer-voted 1v1 matchups\
+3\. BOOTY! Exchange your Doubloons for cool stuff in the shop\
+4\. REPEAT! Build, battle, and booty it up until January 31st
+
+To learn more and get involved, click here!
+
+* * * * *
+
+If you have feedback or feature requests, I'd love to hear them. Let me know your number one complaint about HCB by replying to this email.
+
+All the best,
+
+Dylan & the HCB Team
