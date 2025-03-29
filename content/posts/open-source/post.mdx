@@ -16,7 +16,9 @@ Here’s how we did it.
 
 ### Scrubbing
 
-The biggest part of the process was removing all the customer date / personally identifiable data from our repository. Over time, with bug reports etc., we’d posted multiple things that were highly sensitive. The only problem - we had nearly 5,000 issues & PRs which could potentially contain this information. We attempted to automate this process with Regex but it was difficult to cover edge case. Our solution was to hire a team of “scrubbers” who would go through the repository and flag any sensitive content. We assigned every scrubber a block of hundred issues / PRs; once finished they could claim a new block of issues and PRs. Within fifteen days - the entire repository was scrubbed!
+HCB began as a private repository with the intention of open sourcing one day. With it being private, the repository collected amounts of customer data / personally identifiable data (PII). Over time, with bug reports, etc., we posted highly sensitive information across GitHub issues, pull requests, and commits. 
+
+We had nearly 5,000 issues & PRs which could potentially contain this information. We attempted to automate this process with Regex, but it was difficult to cover edge cases such as PII within images. Our solution was to hire a team of “scrubbers” who would go through the repository and flag any sensitive content. We assigned every scrubber a block of hundred issues / PRs; once finished they could claim a new block of issues and PRs. Within fifteen days - the entire repository's Issues and Pull Requests were scrubbed of customer data and PII.
 
 ![](Screenshot%202025-03-29%20at%2010.46.46%E2%80%AFAM.png)
 
