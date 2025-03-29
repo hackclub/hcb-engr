@@ -1,0 +1,61 @@
+# bank.engineering post
+
+[Last night we open-sourced HCB](https://hackclub.com/fiscal-sponsorship/open-source/), taking a seven-year old codebase from private to public has been long journey. Check it out and star it here: [github.com/hackclub/hcb](https://github.com/hackclub/hcb).
+
+Here’s how we did it.
+
+### Scrubbing
+
+The biggest part of the process was removing all the customer date / personally identifiable data from our repository. Over time, with bug reports etc., we’d posted multiple things that were highly sensitive. The only problem - we had nearly 5,000 issues & PRs which could potentially contain this information. We attempted to automate this process with Regex but it was difficult to cover edge case. Our solution was to hire a team of “scrubbers” who would go through the repository and flag any sensitive content. We assigned every scrubber a block of hundred issues / PRs; once finished they could claim a new block of issues and PRs. Within fifteen days - the entire repository was scrubbed!
+![](Screenshot%202025-03-29%20at%2010.46.46%E2%80%AFAM.png)<!-- {"width":422} -->
+The scrubbers ended up identifying 170 instances of sensitive information in the repository. I then took that list and reached out to GitHub support (thank you Fred!) to remove the images from GitHub servers and the issues / edit history from their database.
+
+### Credentials w/ Doppler
+
+Our next concern was our credentials. Don’t worry, we hadn’t been storing our `.env` in the repository. We were using [Rails’ encrypted credentials system](https://guides.rubyonrails.org/security.html#environmental-security). It’s decent, however, we were concerned that if our key leaked, everything would be leaked. With that in mind, we transitioned to storing our credentials with [Doppler](https://www.doppler.com/) and [built a custom module](https://github.com/hackclub/hcb/blob/main/app/lib/credentials.rb) to load the credentials into the environment. Some benefits of using Doppler: more flexibility with environments, audit logs, and convenient changes. The module also supported overriding the variables in Doppler in an ignored `.env`; this is also the system for developers without Doppler access.
+
+### Git rewrite
+
+We didn’t commit our `.env` file but there were some files with secrets exposed in them. To identify these secrets we used `git log` on a couple of strings we’d identified as critical (eg. bank account numbers):
+
+```
+git log -S [SECRET]
+```
+
+We also used [grab/secret-scanner](https://github.com/grab/secret-scanner) and [trufflesecurity/trufflehog](https://github.com/trufflesecurity/trufflehog) to scan for any other potential secrets in our codebase.
+
+After identifying these files / strings, we used [`git-filter-repo`](https://github.com/newren/git-filter-repo) to remove them. We ran these commands in a GitHub codespace to have as clean of a setup as possible.
+
+To remove an entire file we used:
+
+```bash
+python3 git-filter-repo.py --sensitive-data-removal --path [file_path] --invert-paths
+```
+
+And to redact a string we used:
+
+```bash
+python3 git-filter-repo.py --sensitive-data-removal --replace-text <(echo 'STRING==>REDACTED') --force
+```
+
+We then force pushed to our repository. For this to have any meaning, we had to unfortunately delete all forks of the repository and hard reset all of our local environments. 
+
+Lastly, we worked with GitHub support to remove the cached commits! Thank you Eden.
+
+As a side effect of this many of our PRs look a little funny:
+![](Screenshot%202025-03-24%20at%2011.58.51%E2%80%AFAM.png)
+
+### Security discussions
+
+We had a lot of back and forward conversations about security during this process. We’ve implemented a couple of safeguards during this process but the general consensus walking away from those conversations was that we were risking very little by open sourcing and long-term, our codebase would be more secure. 
+
+### Documentation
+
+Lastly, we wanted to make sure that our codebase would be accessible to new developers. We worked on making the setup process smoother w/ Codespaces, wrote guides to the key parts of HCB (for example, this guide on the transaction mapping engine), and I gave a talk at SF Ruby with a brief overview of our codebase:
+
+There’s still more work to do! Reach out if you wish a part of HCB was documented better (sam@hackclub.com). And, if you’re a teenager interested in helping out, join us in the `#hcb-dev` channel on the [Hack Club Slack](https://hackclub.com/slack).
+
+Years in the making - this is a proud moment for the whole team! I’ll leave you with this [`gource`  video](https://gource.io/) of the codebase over the years.
+
+
+
