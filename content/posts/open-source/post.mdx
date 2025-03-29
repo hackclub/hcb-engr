@@ -1,0 +1,73 @@
+import post from '@/components/Post';
+
+export default post({
+    title: "💻 The journey to open sourcing a $50 million neobank",
+    slug: "open-source",
+    category: ["technical"],
+    authors: ["sam"],
+    date: new Date("2025-03-29T20:00:00.200Z"),
+});
+
+[Last night we open-sourced HCB](https://hackclub.com/fiscal-sponsorship/open-source/), taking a seven-year old codebase from private to public has been long journey. Check it out and star it here: [github.com/hackclub/hcb](https://github.com/hackclub/hcb).
+
+Here’s how we did it.
+
+## Scrubbing
+
+HCB began as a private repository with the intention of open sourcing one day. With it being private, the repository collected amounts of customer data / personally identifiable data (PII). Over time, with bug reports, etc., we posted highly sensitive information across GitHub issues, pull requests, and commits. 
+
+We had nearly 5,000 issues & PRs which could potentially contain this information. We attempted to automate this process with Regex, but it was difficult to cover edge cases such as PII within images. Our solution was to hire a team of “scrubbers” who would go through the repository and flag any sensitive content. We assigned every scrubber a block of hundred issues / PRs; once finished they could claim a new block of issues and PRs. Within fifteen days - the entire repository's Issues and Pull Requests were scrubbed of customer data and PII.
+
+![](https://hc-cdn.hel1.your-objectstorage.com/s/v3/d4ff946e4be35c21c68c2ddde0789242a5e52006_screenshot_2025-03-29_at_10.46.46___am.png)
+
+The scrubbers ended up identifying 170 instances of sensitive information in the repository. I then took that list, updated the GitHub comments to remove those instances, and reached out to GitHub support (thank you Fred!) to remove the images from GitHub servers and the edit history from their database.
+
+## Credentials w/ Doppler
+
+Our next concern was our credentials. Don’t worry, we hadn’t been storing our `.env` in the repository. We were using [Rails’ encrypted credentials system](https://guides.rubyonrails.org/security.html#environmental-security). It’s decent, however, we were concerned that if our key leaked, everything would be leaked with no option for remediation. With that in mind, we transitioned to storing our credentials with [Doppler](https://www.doppler.com/) and [built a custom module](https://github.com/hackclub/hcb/blob/main/app/lib/credentials.rb) to load the credentials into the Rails processes' environment. Some benefits of using Doppler: more flexibility with environments (we have developers with different levels of access), audit logs, and convenient changes (without refreshing GitHub branches). The module also supported overriding Doppler variables for specific environments using an ignored `.env`. For developers without Doppler access, this is also the system for setting environment variables.
+
+## Git rewrite
+
+We didn’t commit our `.env` file but there were some files with secrets exposed in them. To identify these secrets we used `git log` on a couple of strings we’d identified as critical (eg. bank account numbers):
+
+```
+git log -S [SECRET]
+```
+
+We also used [grab/secret-scanner](https://github.com/grab/secret-scanner) and [trufflesecurity/trufflehog](https://github.com/trufflesecurity/trufflehog) to scan for any other potential secrets in our codebase.
+
+After identifying these files / strings, we used [`git-filter-repo`](https://github.com/newren/git-filter-repo) to remove them. We ran these commands in a GitHub codespace to have as clean of a setup as possible.
+
+To remove an entire file we used:
+
+```bash
+python3 git-filter-repo.py --sensitive-data-removal --path [file_path] --invert-paths
+```
+
+And to redact a string we used:
+
+```bash
+python3 git-filter-repo.py --sensitive-data-removal --replace-text <(echo 'STRING==>REDACTED') --force
+```
+
+We then force pushed to our repository. For this to have any meaning, we had to unfortunately delete all forks of the repository and hard reset all of our local environments. 
+
+Lastly, we worked with GitHub support to remove the cached commits! Thank you Eden.
+
+As a side effect of this many of our PRs look a little funny:
+
+![](https://hc-cdn.hel1.your-objectstorage.com/s/v3/d2773f4fefe1aaa56fb5d6e1f524df0b629d8399_screenshot_2025-03-24_at_11.58.51___am.png)
+
+## Security discussions
+
+We had a lot of back and forward conversations about security during this process. We’ve implemented a couple of safeguards during this process but the general consensus walking away from conversations with security firms/experts was that we were risking very little by open sourcing, and long-term, our codebase would be more secure.
+
+## Documentation
+
+Lastly, we wanted to make sure that our codebase would be accessible to new developers. We worked on making the setup process smoother w/ Codespaces, wrote guides to the key parts of HCB (for example, [this guide on the transaction mapping engine](https://github.com/hackclub/hcb/blob/main/dev-docs/guides/transaction_imports.md)), and I gave a talk at SF Ruby with a brief overview of our codebase:
+
+<iframe height="400" src="https://www.youtube.com/embed/CBxilReUkJ0?si=GgcQ9GDoqSl1avoK;start=3005" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" style={{borderRadius: "8px", width: "100%"}} allowfullscreen=""></iframe>
+
+There’s still more work to do! Reach out if you wish a part of HCB was documented better ([hcb-engr@hackclub.com](mailto:hcb-engr@hackclub.com)). And, if you’re a teenager interested in helping out, join us in the `#hcb-dev` channel on the [Hack Club Slack](https://hackclub.com/slack?utm_source=hcb_open_sourcing).
+
+Years in the making - this is a proud moment for the whole team! I’ll leave you with this [`gource`  video](https://gource.io/) of the codebase over the years.
