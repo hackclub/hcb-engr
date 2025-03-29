@@ -17,7 +17,9 @@ Here’s how we did it.
 ### Scrubbing
 
 The biggest part of the process was removing all the customer date / personally identifiable data from our repository. Over time, with bug reports etc., we’d posted multiple things that were highly sensitive. The only problem - we had nearly 5,000 issues & PRs which could potentially contain this information. We attempted to automate this process with Regex but it was difficult to cover edge case. Our solution was to hire a team of “scrubbers” who would go through the repository and flag any sensitive content. We assigned every scrubber a block of hundred issues / PRs; once finished they could claim a new block of issues and PRs. Within fifteen days - the entire repository was scrubbed!
-![](Screenshot%202025-03-29%20at%2010.46.46%E2%80%AFAM.png)<!-- {"width":422} -->
+
+![](Screenshot%202025-03-29%20at%2010.46.46%E2%80%AFAM.png)
+
 The scrubbers ended up identifying 170 instances of sensitive information in the repository. I then took that list and reached out to GitHub support (thank you Fred!) to remove the images from GitHub servers and the issues / edit history from their database.
 
 ### Credentials w/ Doppler
@@ -53,6 +55,7 @@ We then force pushed to our repository. For this to have any meaning, we had to 
 Lastly, we worked with GitHub support to remove the cached commits! Thank you Eden.
 
 As a side effect of this many of our PRs look a little funny:
+
 ![](Screenshot%202025-03-24%20at%2011.58.51%E2%80%AFAM.png)
 
 ### Security discussions
