@@ -16,9 +16,11 @@ export default function Widget() {
 
     return (
         <>
-            <Head>
-                <style dangerouslySetInnerHTML={{ __html: `html { background: transparent!important; }` }}></style>
-            </Head>
+            <style jsx global>{`
+                html, body {
+                    background: transparent !important;
+                }
+            `}</style>
             <a href="https://bank.engineering" target="_blank">
                 {number >= 1 ? (
                     <Badge variant="pill"><span style={{
