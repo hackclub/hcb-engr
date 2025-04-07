@@ -17,7 +17,10 @@ export default function Widget() {
     return (
         <a href="https://bank.engineering" target="_blank">
             {number >= 1 ? (
-                <Badge variant="pill">{number}</Badge>
+                <Badge variant="pill"><span style={{
+                    transform: "scale(1.5)",
+                    display: "block"
+                }}>{number}</span></Badge>
             ) : (
                 <Badge variant="pill" bg="muted">​</Badge>
                 // zero width space             ^
