@@ -16,6 +16,11 @@ export default function Widget() {
 
     return (
         <a href="https://bank.engineering" target="_blank">
+            <style jsx>{`
+                body, html {
+                    background: transparent !important;
+                }
+            `}</style>
             {number >= 1 ? (
                 <Badge variant="pill"><span style={{
                     transform: "scale(1.5)",
