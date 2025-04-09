@@ -22,7 +22,8 @@ export default function Widget() {
                 }
             `}</style>
             <a href="https://bank.engineering" target="_blank" style={{
-                transform: "scale(0.5)"
+                transform: "scale(0.5)",
+                display: "block"
             }}>
                 {number >= 1 ? (
                     <Badge variant="pill"><span style={{
