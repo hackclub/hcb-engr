@@ -6,4 +6,29 @@ module.exports = withMDX({
         'jsx',
         'mdx'
     ],
+    headers: async () => {
+        return [
+            {
+                source: '/api/cookies',
+                headers: [
+                    {
+                        key: 'Access-Control-Allow-Credentials',
+                        value: 'true'
+                    },
+                    {
+                        key: 'Access-Control-Allow-Origin',
+                        value: 'https://hcb.hackclub.com'
+                    },
+                    {
+                        key: 'Access-Control-Allow-Methods',
+                        value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT,HEAD'
+                    },
+                    {
+                        key: 'Access-Control-Allow-Headers',
+                        value: 'X-CSRF-Token, X-Requested-With, Authorization'
+                    }
+                ]
+            }
+        ]
+    }
 })

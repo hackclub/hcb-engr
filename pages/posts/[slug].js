@@ -43,8 +43,8 @@ export default function Post({ slug }) {
   });
 
   useEffect(() => {
-    if (!localStorage.getItem("initialVisit")) {
-      localStorage.setItem("initialVisit", Date.now());
+    if (!Cookies.get("initialVisit")) {
+      Cookies.set("initialVisit", Date.now());
     }
   }, []);
 
