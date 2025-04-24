@@ -1,5 +1,5 @@
 import { cookies } from 'next/headers';
-import { posts } from '../content'
+import { posts } from '../../content'
 
 export default async function handler(req, res) {
     console.log("Cookies request", req.cookies);
