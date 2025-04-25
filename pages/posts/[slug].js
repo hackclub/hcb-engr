@@ -6,6 +6,7 @@ import { DisplayProvider } from '@/lib/display'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { Box, Card, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
+import Cookies from 'js-cookie'
 
 const relatedPosts = post => {
   const { meta } = post;
