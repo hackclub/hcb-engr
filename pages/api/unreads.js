@@ -11,15 +11,9 @@ export default async function handler(req, res) {
 
     console.log("Cookies response", lastPostVisit, initialVisit);
 
-    const json = {
-        lastPostVisit: lastPostVisit,
-        initialVisit: initialVisit,
-        count
-    };
-
     if (setInitialVisit) {
-        res.status(200).setHeader("Set-Cookie", "initialVisit=" + initialVisit).json(json);
+        res.status(200).setHeader("Set-Cookie", "initialVisit=" + initialVisit).json({ count });
     } else {
-        res.status(200).json(json);
+        res.status(200).json({ count });
     }
 }
