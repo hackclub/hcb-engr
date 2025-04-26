@@ -9,7 +9,7 @@ module.exports = withMDX({
     headers: async () => {
         return [
             {
-                source: '/api/cookies',
+                source: '/api/unreads',
                 headers: [
                     {
                         key: 'Access-Control-Allow-Credentials',
