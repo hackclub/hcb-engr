@@ -48,10 +48,14 @@ export default function Post({ slug }) {
             Cookies.set("initialVisit", Date.now());
         }
 
-        window.location.hash = Math.max(
-            document.body.scrollHeight, document.body.offsetHeight,
-            document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight
-        );
+        setInterval(() => {
+            const height = Math.max(
+                document.body.scrollHeight, document.body.offsetHeight,
+                document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight
+            );
+
+            window.parent.postMessage({ height }, "*")
+        }, 500);
     }, []);
 
     return (
