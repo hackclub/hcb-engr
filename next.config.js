@@ -28,7 +28,25 @@ module.exports = withMDX({
                         value: 'X-CSRF-Token, X-Requested-With, Authorization'
                     }
                 ]
+            },
+            {
+                source: '/api/active-maintenance',
+                headers: [
+                    {
+                        key: 'Access-Control-Allow-Origin',
+                        value: '*'
+                    },
+                    {
+                        key: 'Access-Control-Allow-Methods',
+                        value: 'GET,OPTIONS,PATCH,DELETE,POST,PUT,HEAD'
+                    },
+                    {
+                        key: 'Access-Control-Allow-Headers',
+                        value: 'X-CSRF-Token, X-Requested-With, Authorization'
+                    }
+                ]
             }
+
         ]
     }
 })
