@@ -48,14 +48,20 @@ export default function Post({ slug }) {
             Cookies.set("initialVisit", Date.now());
         }
 
-        setInterval(() => {
+        const sendHeight = () => {
             const height = Math.max(
                 document.body.scrollHeight, document.body.offsetHeight,
                 document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight
             );
 
             window.parent.postMessage({ height }, "*")
-        }, 500);
+        };
+
+        sendHeight();
+
+        window.addEventListener("resize", sendHeight);
+        window.addEventListener("load", sendHeight);
+        window.addEventListener("DOMContentLoaded", sendHeight);
     }, []);
 
     return (
