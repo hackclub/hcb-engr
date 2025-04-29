@@ -49,10 +49,10 @@ export default function Post({ slug }) {
         }
 
         const sendHeight = () => {
-            const height = Math.max(
-                document.body.scrollHeight, document.body.offsetHeight,
-                document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight
-            );
+            const height = document.body.scrollHeight;
+
+            console.log(document.body.scrollHeight, document.body.offsetHeight,
+                document.documentElement.clientHeight, document.documentElement.scrollHeight, document.documentElement.offsetHeight)
 
             window.parent.postMessage({ height }, "*")
         };
