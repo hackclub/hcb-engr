@@ -16,7 +16,6 @@ const posts = Object.entries(rawPosts).map(
       component: componentProps => {
         const Component = rawComponent
         const [colorMode] = useColorMode();
-        console.log(componentProps.truncate ? "truncating!": "")
         return (
           <Component
             components={{
@@ -99,7 +98,7 @@ const posts = Object.entries(rawPosts).map(
                 fontSize: "16px",
               }}>{props.children}</code></Text>,
               a: props => <Link target="_blank" {...props} />,
-              p: props => {console.log(componentProps); return <Text as="p" {...props} sx={{ fontSize: 2, my: 3, ":first-child": { mt: 0 } }} />}
+              p: props => <Text as="p" {...props} sx={{ fontSize: 2, my: 3, ":first-child": { mt: 0 } }} />
             }}
             {...componentProps}
             className={componentProps.truncate ? "truncate" : ""}
