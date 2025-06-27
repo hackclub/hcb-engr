@@ -52,6 +52,6 @@ video {
 }
 
 .truncate p:after {
-  content: "\A";
-  white-space:pre;
+  content: "";
+  display: block;
 }
