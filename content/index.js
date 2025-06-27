@@ -13,7 +13,7 @@ const posts = Object.entries(rawPosts).map(
     return ({
       meta,
       rawComponent,
-      component: props => {
+      component: componentProps => {
         const Component = rawComponent
         const [colorMode] = useColorMode();
         return (
@@ -100,7 +100,8 @@ const posts = Object.entries(rawPosts).map(
               a: props => <Link target="_blank" {...props} />,
               p: props => <Text as="p" {...props} sx={{ fontSize: 2, my: 3, ":first-child": { mt: 0 } }} />
             }}
-            {...props}
+            {...componentProps}
+            className={componentProps.truncate ? "truncate" : ""}
           />
         )
       }
