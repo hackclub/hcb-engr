@@ -94,6 +94,9 @@ export default function Home() {
               {i < 2 && <Divider />}
             </Box>
           ))}
+          <Link href="/" target="_blank" sx={{ textAlign: "center", width: "100%", display: "block", fontSize: 3 }}>
+            Keep reading
+          </Link>
         </Container>
       </Box>
     </>
