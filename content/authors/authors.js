@@ -19,6 +19,7 @@ import aram from './aram.jpg'
 import zoya from './zoya.jpg'
 import ben from './ben.jpg'
 import nora from './nora.png'
+import samuel from "./samuel.png"
 
 
 export default {
@@ -135,5 +136,10 @@ export default {
     name: "Nora",
     role: "not an HCB engineer but plays one on TV",
     avatar: nora
+  },
+  samuel: {
+    name: "Samuel",
+    role: "Engineer",
+    avatar: samuel
   }
 }
