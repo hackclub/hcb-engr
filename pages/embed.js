@@ -4,11 +4,13 @@ import {
   Container,
   Divider,
   Link,
+  useColorMode
 } from 'theme-ui'
 import { useEffect } from 'react'
 import { DisplayProvider } from '@/lib/display'
 import Head from 'next/head'
 import Cookies from "js-cookie"
+import { useQueryParam, StringParam } from 'use-query-params';
 
 function PostPreview({ post, truncate }) {
   const PostBody = post.component
@@ -20,6 +22,9 @@ function PostPreview({ post, truncate }) {
 }
 
 export default function Home() {
+  const [theme, setTheme] = useColorMode();
+  const [themeParam] = useQueryParam("theme", StringParam);
+
   useEffect(() => {
     if (!Cookies.get("initialVisit")) {
       Cookies.set("initialVisit", Date.now());
@@ -27,6 +32,10 @@ export default function Home() {
 
     Cookies.set("lastPostVisit", posts.toReversed()[0].meta.slug);
   }, []);
+
+  useEffect(() => {
+    setTheme(themeParam)
+  }, [themeParam])
 
   return (
     <>
@@ -43,7 +52,7 @@ export default function Home() {
         <Container as="article" variant="wide" sx={{ pt: 3, pb: [4, 5], px: 0 }}>
           {posts.toReversed().slice(0, 3).map((post, i) => (
             <Box className="truncate">
-              <Link href={`/posts/${post.meta.slug}`} target="_blank" sx={{ textDecorationLine: "none", color: "white", px: 2, py: 4, display: "block", ":hover": { backgroundColor: "darker" } }}><PostPreview key={post.meta.slug} post={post} truncate /></Link>
+              <Link href={`/posts/${post.meta.slug}`} target="_blank" sx={{ textDecorationLine: "none", color: theme === "light" ? "black" : "white", px: 2, py: 4, display: "block", ":hover": { backgroundColor: theme === "light" ? "snow" : "darker" } }}><PostPreview key={post.meta.slug} post={post} truncate /></Link>
               {i < 2 && <Divider />}
             </Box>
           ))}
