@@ -17,7 +17,7 @@ module.exports = withMDX({
                     },
                     {
                         key: 'Access-Control-Allow-Origin',
-                        value: 'https://hcb.hackclub.com'
+                        value: process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://hcb.hackclub.com'
                     },
                     {
                         key: 'Access-Control-Allow-Methods',
