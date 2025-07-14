@@ -20,7 +20,7 @@ import zoya from './zoya.jpg'
 import ben from './ben.jpg'
 import nora from './nora.png'
 import samuel from "./samuel.png"
-
+import luke from "./luke.png"
 
 export default {
   sam: {
@@ -141,5 +141,10 @@ export default {
     name: "Samuel",
     role: "Engineer",
     avatar: samuel
+  },
+  luke: {
+    name: "Luke",
+    role: "Engineer",
+    avatar: luke
   }
 }
