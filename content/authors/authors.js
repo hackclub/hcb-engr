@@ -143,7 +143,7 @@ export default {
     avatar: samuel
   },
   luke: {
-    name: "Luke",
+    name: "Luke Oldenburg",
     role: "Engineer",
     avatar: luke
   }
