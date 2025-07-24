@@ -238,11 +238,11 @@ export default function Header({ post, small }) {
                     </Heading>
                     <PostTags tags={post.meta.tags} category={post.meta.category} />
                   </Box>
-                  <Box sx={{ mt: 2 }}>
-                    <Author id={post.meta.authors[0]} sx={{
+                  <Box sx={{ mt: 2, display: "flex", gap: 3 }}>
+                    {(Array.isArray(post.meta.authors) ? post.meta.authors : [post.meta.authors]).map(author => <Author id={author} sx={{
                       color: "secondary",
                       fontWeight: 400
-                    }} />
+                    }} />)}
                   </Box>
                 </>
               ) : (

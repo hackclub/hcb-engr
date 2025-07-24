@@ -50,7 +50,7 @@ const PostContext = createContext()
  * @property {string} title - The title of the post
  * @property {Array.<string>} authors - The authors of the post
  * @property {Date} date - The date of the post
- * @property {Array.<"ledger"|"security"|"cards"|"receipts"|"invoices"|"donations"|"transfers"|"accounting"|"receive-money"|"organizations"|"notifications"|"comments"|"design"|"documents"|"perks"|"api"|"reimbursements"|"spending-controls"|"transparency-mode">} tags - The tags of the post
+ * @property {Array.<"ledger"|"security"|"cards"|"receipts"|"invoices"|"donations"|"transfers"|"accounting"|"receive-money"|"organizations"|"notifications"|"comments"|"design"|"documents"|"perks"|"api"|"reimbursements"|"spending-controls"|"transparency-mode"|"announcements">} tags - The tags of the post
  * @property {string} slug - The slug of the post
  * @property {string} slackLink - A link to the corresponding post on Slack
  * @property {string} headwayUrl - A link to the corresponding post on Slack
@@ -120,6 +120,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {tags.includes('spending-controls') && <Tag filterOnClick={filterOnClick}>Spending Controls</Tag>}
         {tags.includes('transparency-mode') && <Tag filterOnClick={filterOnClick}>Transparency Mode</Tag>}
         {tags.includes('power-users') && <Tag filterOnClick={filterOnClick}>Power Users</Tag>}
+        {tags.includes('announcements') && <Tag filterOnClick={filterOnClick}>Announcements</Tag>}
       </Box>
     </>
   )
