@@ -14,8 +14,8 @@ function UnstyledLink({ children, ...props }) {
   )
 }
 
-export default function Header({ post }) {
-  const concise = false;
+export default function Header({ post, small }) {
+  const concise = small || false;
   const [colorMode, setColorMode] = useColorMode()
   const document = useDocument()
   const referrer = useReferrer()
@@ -160,7 +160,6 @@ export default function Header({ post }) {
                 pt: 4,
                 pb: 2,
                 display: 'flex',
-                justifyContent: 'center',
                 position: 'relative'
               }
               : { pt: 5, pb: [3, 4], position: 'relative' })
@@ -239,10 +238,12 @@ export default function Header({ post }) {
                     </Heading>
                     <PostTags tags={post.meta.tags} category={post.meta.category} />
                   </Box>
-                  <Author id={post.meta.authors[0]} sx={{
-                    color: "secondary",
-                    fontWeight: 400
-                  }} />
+                  <Box sx={{ mt: 2 }}>
+                    <Author id={post.meta.authors[0]} sx={{
+                      color: "secondary",
+                      fontWeight: 400
+                    }} />
+                  </Box>
                 </>
               ) : (
                 <>

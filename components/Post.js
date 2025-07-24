@@ -96,6 +96,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {category == 'improvement' && <Tag>Improvement</Tag>}
         {category == 'newsletter' && <Tag>Newsletter</Tag>}
         {category == 'news' && <Tag>News</Tag>}
+        {category == 'technical' && <Tag>Technical</Tag>}
         {category == 'maintenance' && <Tag>Maintenance</Tag>}
 
         {tags.includes('ledger') && <Tag filterOnClick={filterOnClick}>Ledger</Tag>}
@@ -134,45 +135,51 @@ function PostHeader({ meta }) {
   return (
     <Box
       sx={{
-        minWidth: 'min(400px, 100%)',
-        width: '400px',
-        maxWidth: '100%'
+        minWidth: ['100%', '100%', '100%', 'min(400px, 100%)'],
+        width: ['100%', '100%', '100%', '400px'],
+        maxWidth: ['100%', '100%', '100%', '100%']
       }}
     >
-      <Heading as="h2" variant="headline" id={slug} mt={0}>
-        {router.pathname == '/' ? (
-          <Link
-            href={`/posts/${slug}`}
-            sx={{
-              textDecoration: 'none',
-              color: 'inherit',
-              ':hover': {
-                color: colorMode == 'dark' ? 'smoke' : 'slate'
-              }
-            }}
-          >
-            {title}
-          </Link>
-        ) : (
-          title
-        )}
-      </Heading>
+      <Box sx={{
+        position: [undefined, undefined, undefined, "sticky"],
+        top: [undefined, undefined, undefined, "112px"],
 
-      <Heading
-        as="h3"
-        mb={2}
-        variant="subheadline"
-        sx={{ color: 'muted', m: 0, fontWeight: 500, fontSize: 1 }}
-      >
-        {date.toLocaleDateString('en-us', {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          timeZone: "Etc/UTC"
-        })}
-      </Heading>
+      }}>
+        <Heading as="h2" variant="headline" id={slug} mt={0}>
+          {router.pathname == '/' ? (
+            <Link
+              href={`/posts/${slug}`}
+              sx={{
+                textDecoration: 'none',
+                color: 'inherit',
+                ':hover': {
+                  color: colorMode == 'dark' ? 'smoke' : 'slate'
+                }
+              }}
+            >
+              {title}
+            </Link>
+          ) : (
+            title
+          )}
+        </Heading>
 
-      <PostTags tags={tags} category={category} />
+        <Heading
+          as="h3"
+          mb={2}
+          variant="subheadline"
+          sx={{ color: 'muted', m: 0, fontWeight: 500, fontSize: 1 }}
+        >
+          {date.toLocaleDateString('en-us', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            timeZone: "Etc/UTC"
+          })}
+        </Heading>
+
+        <PostTags tags={tags} category={category} />
+      </Box>
     </Box>
   )
 }

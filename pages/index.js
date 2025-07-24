@@ -19,6 +19,7 @@ import { DisplayProvider } from '@/lib/display'
 import { PostTags } from '@/components/Post'
 import { useQueryParam, StringParam } from 'use-query-params';
 import Head from 'next/head'
+import Cookies from "js-cookie"
 
 function PostPreview({ post }) {
   const PostBody = post.component
@@ -33,11 +34,11 @@ export default function Home() {
   const [tag, setTag] = useQueryParam('tag', StringParam);
 
   useEffect(() => {
-    if (!localStorage.getItem("initialVisit")) {
-      localStorage.setItem("initialVisit", Date.now());
+    if (!Cookies.get("initialVisit")) {
+      Cookies.set("initialVisit", Date.now());
     }
 
-    localStorage.setItem("lastPostVisit", posts.toReversed()[0].meta.slug);
+    Cookies.set("lastPostVisit", posts.toReversed()[0].meta.slug);
   }, []);
 
   return (

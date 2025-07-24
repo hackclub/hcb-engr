@@ -34,3 +34,24 @@
 :target {
   scroll-margin-top: 100px;
 }
+
+video {
+  max-width: 100%;
+}
+
+.truncate div:has(p) {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.truncate p {
+  display: contents;
+}
+
+.truncate p:after {
+  content: "";
+  display: block;
+}
