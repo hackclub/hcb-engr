@@ -19,7 +19,7 @@ export default class App extends NextApp {
             <link rel="icon" href="/favicon.png" />
             <link rel="shortcut icon" href="/favicon.png" />
             <link rel="favicon" href="/favicon.png" />
-            <script defer data-domain="bank.engineering" src="https://plausible.io/js/script.js"></script>
+            <script defer data-domain="blog.hcb.hackclub.com" src="https://plausible.io/js/script.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
           </Head>
           <Component {...pageProps} />
