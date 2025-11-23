@@ -21,6 +21,7 @@ import ben from './ben.jpg'
 import nora from './nora.png'
 import samuel from "./samuel.png"
 import luke from "./luke.png"
+import mohamad from "./mohamad.png"
 
 export default {
   sam: {
@@ -146,5 +147,10 @@ export default {
     name: "Luke Oldenburg",
     role: "Engineer",
     avatar: luke
+  },
+  mohamad: {
+    name: "Mohamad",
+    role: "Engineer",
+    avatar: mohamad
   }
 }

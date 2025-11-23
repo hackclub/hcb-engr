@@ -1,0 +1,45 @@
+import post from '@/components/Post';
+import track_expenses from "./track_expenses.png";
+import spend_money from "./spend_money.png";
+import collect_donations from "./collect_donations.png";
+
+export default post({
+  title: '📱 Introducing HCB Mobile',
+  slug: 'hcb-mobile-release',
+  category: 'new',
+  tags: ['mobile'],
+  authors: ['mohamad'],
+  date: new Date('2025-12-1'),
+  description: "Introducing HCB's latest official mobile app for both iOS and Android",
+});
+
+We're incredibly excited to announce **HCB Mobile**, a HCB's official app built for iOS and Android! After more than a year of development, we're bringing the power of HCB to your pocket, making it easier than ever to manage your finances on the go.
+
+Whether you're at a hackathon, running errands for your robotics team, or just want to check your organization's balance from anywhere, HCB Mobile has you covered.
+
+<div style={{ display: 'flex', gap: '1rem', margin: '2rem 0', justifyContent: 'center', flexWrap: 'wrap' }}>
+  <Image src={track_expenses} />
+  <Image src={spend_money} />
+  <Image src={collect_donations} />
+</div>
+
+
+## Features
+
+- 📈 **Track your organization**—stay up to date with your organization's activity straight from your phone.
+
+- 💳 **Manage your cards**— now you can add your cards to your Apple / Google Wallet directly from the app (no more manually entering in card details). Need a new card on the go? Issue a new card right from your phone! Card got lost while shopping? Freeze it with just a tap. 
+
+- 🧾 **Upload receipts the easy way**—we all know receipt tracking is painful, so we built it directly into the app! Upload photos directly from your device, share them from other apps, or match existing receipts to transactions with a tap.
+
+- 💰 **Accept Tap to Pay donations**—accept contactless payments directly on your mobile device. No extra hardware required.
+
+## Download now
+
+HCB Mobile is available now on the [App Store](sigma) and [Google Play Store](sigma). If you have any questions or feedback, please reach out to us at [hcb@hackclub.com](mailto:hcb@hackclub.com).
+
+## Open source
+
+Oh, did I forget to tell you? We're also open source on [GitHub](https://github.com/hackclub/hcb-mobile) (be sure to leave a ⭐)! 
+
+Our tech stack is built on [**Expo**](https://expo.dev), a React Native framework that streamlines deveopment and deployment across platforms, alongside libraries and SDKs such as SWR, Sentry, and Stripe that power key features.
