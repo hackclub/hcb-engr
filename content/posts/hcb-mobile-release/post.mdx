@@ -52,7 +52,7 @@ One of the biggest challenges we had to overcome while implementing the app was 
 
 ## OTA Updates
 
-Another major challenge was the traditional app release cycle: any minor fix requires publishing a new build, which can be time-consuming (and occasionally turn your Mac into a grilled cheese maker). Our solution was to adopt the concept of OTA (Over the Air) updates which allows us to remotely trigger updates wihtout needing a new app build. Expo offers this solution in their [EAS Updates service](https://docs.expo.dev/eas-update/how-it-works/) directly integrating it into their Expo ecosystem. Furthermore, I setup a [Github Action](https://github.com/hackclub/hcb-mobile/blob/main/.github/workflows/publish.yml) to publish a new OTA update on every commit to main allowing to have continuous deployment. The diagram below explains a basic overview of how this is possible using the power of React Native. 
+Another major challenge was the traditional app release cycle: any minor fix required publishing a new build, which was time-consuming (and can turns your Mac into a grilled cheese maker). After dealing with this for a while, we adopted the model of OTA (Over the Air) updates. This allowed us to remotely trigger updates without needing a new app build. Conveniently, Expo offers this solution in their [EAS Updates service](https://docs.expo.dev/eas-update/how-it-works/). We setup a [Github Action](https://github.com/hackclub/hcb-mobile/blob/main/.github/workflows/publish.yml) to publish a new OTA update on every commit to the main branch, allowing us to have continuous deployment. The diagram below shows a basic overview of how this is possible.
 
 <Image src={eas_updates} />
 
