@@ -2,6 +2,8 @@ import post from '@/components/Post';
 import track_expenses from "./track_expenses.png";
 import spend_money from "./spend_money.png";
 import collect_donations from "./collect_donations.png";
+import eas_updates from "./eas_updates.png";
+import prs from "./prs.png";
 
 export default post({
   title: '📱 Introducing HCB Mobile',
@@ -43,3 +45,21 @@ HCB Mobile is available now on the [App Store](https://apps.apple.com/us/app/hcb
 We're open source on [GitHub](https://github.com/hackclub/hcb-mobile)! (make sure you ⭐ the repo!)
 
 The app is built on [**Expo**](https://expo.dev), a React Native framework that streamlines development and deployment across platforms, alongside libraries and SDKs such as SWR, Sentry, and Stripe that power key features.
+
+## Entitlement Permissions
+
+One of the biggest challenges we had to overcome while implementing the app was getting permissions to use advanced native features such as **Tap to Pay** (for in person donations) and **Push Provisioning** (for adding your card to your digital wallet). Securing these entitlements took weeks (if not months) of back-and-forth emails, test case recordings and complicance checks. For Apple we first needed get the development entitlement, build the feature, and comply with their [extensively long requirements list](https://apple.ent.box.com/v/ttpoiappreviewpdf). On Google's side, the process involved creating a Google Pay & Wallet console organization, sign 3-4 NDAs, sign a CTA, completing identity verification, obtaining a private SDK, submiting a user flow, and finally getting our app whitelisted. On top of all of that we needed to email Stripe with our app details as their SDK power both features to ensure everything is aligned.  
+
+## OTA Updates
+
+Another major challenge was the traditional app release cycle: any minor fix requires publishing a new build, which can be time-consuming (and occasionally turn your Mac into a grilled cheese maker). Our solution was to adopt the concept of OTA (Over the Air) updates which allows us to remotely trigger updates wihtout needing a new app build. Expo offers this solution in their [EAS Updates service](https://docs.expo.dev/eas-update/how-it-works/) directly integrating it into their Expo ecosystem. Furthermore, I setup a [Github Action](https://github.com/hackclub/hcb-mobile/blob/main/.github/workflows/publish.yml) to publish a new OTA update on every commit to main allowing to have continuous deployment. The diagram below explains a basic overview of how this is possible using the power of React Native. 
+
+<Image src={eas_updates} />
+
+## v4 API
+
+Before building mobile features, we needed a robust API.  Over several months, we expanded our v4 API to support functionality such as creating cards, managing a receipt bin, and enhancing transaction data. 
+
+The API not only powers the mobile app but also serves as a foundation for future integrations and automations, allowing users and partners to access functionality programmatically once it becomes public.
+
+<Image src={prs} />
