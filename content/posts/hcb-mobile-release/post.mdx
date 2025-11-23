@@ -46,20 +46,20 @@ We're open source on [GitHub](https://github.com/hackclub/hcb-mobile)! (give us 
 
 The app is built on [**Expo**](https://expo.dev), a React Native framework that streamlines development and deployment across platforms, alongside libraries and SDKs such as SWR, Sentry, and Stripe that power key features.
 
+## v4 API
+
+Before building app features, though, we needed a robust API on HCB itself. Over several months, we expanded our v4 API to support functionality like creating cards, managing receipts, and inviting users to HCB organizations. 
+
+The API improvements we made made HCB mobile possible. More than that, they'll allow us to iterate and build smoothly for future integrations and automations, meaning we'll be able to improve HCB for all users faster than ever before. Once the foundation of the API was in place, the next hurdle was to overcome the obstacles of both the Android and iOS ecosystems. 
+
+<Image src={prs} />
+
 ## Entitlement Permissions
 
-One of the biggest challenges we had to overcome while implementing the app was getting permissions to use advanced native features such as **Tap to Pay** (for in person donations) and **Push Provisioning** (for adding your card to your digital wallet). Securing these entitlements took months of back-and-forth emails, test case recordings, and in-depth compliance checks. For Apple, we first needed to get the development entitlement, build the feature, and comply with their [extensive requirements list](https://apple.ent.box.com/v/ttpoiappreviewpdf). For the Android version of our app, we created a Google Pay & Wallet console organization, signed 3-4 NDAs, a CTA, completed identity verification, obtained a private SDK, and submitted a user flow. Finally, after all of that, we finally were able to get our app whitelisted. On top of all of that, we needed to liaise with Stripe the whole time because their SDK powers the Tap to Pay and Push Provisioning features.
+One of the biggest challenges we had to overcome while implementing the app was getting permissions to use advanced native features such as **Tap to Pay** (for in person donations) and **Push Provisioning** (for adding your card to your digital wallet). Securing these entitlements took months of back-and-forth emails, test case recordings, and in-depth compliance checks. For Apple, we first needed to get the development entitlement, build the feature, and comply with their [extensive requirements list](https://apple.ent.box.com/v/ttpoiappreviewpdf). For the Android version of our app, we created a Google Pay & Wallet console organization, signed 3-4 NDAs, a CTA, completed identity verification, obtained a private SDK, and submitted a user flow. Finally, after all of that, we finally were able to get our app whitelisted. On top of all of that, we needed to liaise with Stripe the whole time because their SDK powers the Tap to Pay and Push Provisioning features. Even after securing entitlements, we still had to deal with another major obstacle: the traditionnel, slow app release cycle. 
 
 ## OTA Updates
 
 Another major challenge was the traditional app release cycle: any minor fix required publishing a new build, which was time-consuming (and can turn your Mac into a grilled cheese maker). After dealing with this for a while, we adopted the model of OTA (Over the Air) updates. This allowed us to remotely trigger updates without needing a new app build. Conveniently, Expo offers this solution in their [EAS Updates service](https://docs.expo.dev/eas-update/how-it-works/). We setup a [Github Action](https://github.com/hackclub/hcb-mobile/blob/main/.github/workflows/publish.yml) to publish a new OTA update on every commit to the main branch, allowing us to have continuous deployment. The diagram below shows a basic overview of how this is possible.
 
 <Image src={eas_updates} />
-
-## v4 API
-
-Before building app features, though, we needed a robust API on HCB itself. Over several months, we expanded our v4 API to support functionality like creating cards, managing receipts, and inviting users to HCB organizations. 
-
-The API improvements we made made HCB mobile possible. More than that, they'll allow us to iterate and build smoothly for future integrations and automations, meaning we'll be able to improve HCB for all users faster than ever before.
-
-<Image src={prs} />
