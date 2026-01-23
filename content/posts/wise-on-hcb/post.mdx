@@ -1,0 +1,41 @@
+import post from '@/components/Post';
+
+export default post({
+    title: "💰 Send money internationally with Wise",
+    slug: "wise-on-hcb",
+    category: ["new"],
+    tags: ["transfers"],
+    authors: ["ian"],
+    date: new Date("2025-11-04T00:30:00.200Z"),
+});
+
+Last year, HCB launched [wire transfers](/posts/wires), a built-in way to send money internationally from HCB. Today, we're excited to announce a new international payment method: **Wise**.
+
+import WiseOnHCB from "./WiseOnHCB.png";
+
+<Image src={WiseOnHCB} />
+
+## What is Wise?
+
+Wise is a payment processor that allows you to send money in over 40 currencies. They offer transparent exchange rates and no minimums. This makes Wise a great option for small-value international payments. You can learn more about Wise on their [website](https://wise.com/).
+
+import WiseTransferModal from "./WiseTransferModal.png";
+
+
+<Image src={WiseTransferModal} />
+
+## Reimbursing via Wise
+
+You can now also add Wise as a reimbursement payout method! Head over to your [payout settings](https://hcb.hackclub.com/my/settings/payouts) on HCB to add Wise as a payout method.
+
+## Fees with Wise
+
+HCB never charges fees for transfers or reimbursements. However, Wise charges a fee for transfers processed through their network that varies based on the amount and destination of the transfer.
+
+In HCB, you can see just how much each transfer or reimbursement will cost you to send:
+
+import FeesOnWise from "./FeesOnWise.png";
+
+<Image src={FeesOnWise} />
+
+We're so happy that Wise is now generally available on HCB—we know it'll make sending money easier for many of our international users. If you have any questions or feedback, please reach out to us at [hcb@hackclub.com](mailto:hcb@hackclub.com).

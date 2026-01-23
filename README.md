@@ -1,6 +1,6 @@
-# hcb-engr site
+# HCB Engineering Blog
 
-Work-in-progress HCB engineering blog
+https://blog.hcb.hackclub.com
 
 ## Modifying content
 
