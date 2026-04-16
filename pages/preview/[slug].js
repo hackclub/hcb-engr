@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import { Author, PostTags } from '@/components/Post'
 import { posts } from '@/content/index'
 import { DisplayProvider } from '@/lib/display'
-import Head from 'next/head'
+import Seo from '@/components/Seo'
 import { useEffect } from 'react'
 import { Box, Card, Container, Flex, Grid, Heading, Link, Text } from 'theme-ui'
 import Cookies from 'js-cookie'
@@ -35,7 +35,6 @@ export default function Post({ slug }) {
     const post = posts.find(post => post.meta.slug === slug)
     const PostBody = post.component
 
-    console.log("FOOBAR", post.meta.primaryImage)
     const date = post.meta.date.toLocaleDateString('en-us', {
         year: 'numeric',
         month: 'long',
@@ -66,15 +65,7 @@ export default function Post({ slug }) {
 
     return (
         <DisplayProvider display="detail">
-            <Head>
-                <title>{post.meta.title}</title>
-                <meta
-                    property='og:description'
-                    content={post.meta.description ? `${post.meta.description} • ${date}` : date}
-                />
-                {post.meta.primaryImage ? <meta property="og:image" content={"https://bank.engineering" + post.meta.primaryImage.src} /> : null}
-
-            </Head>
+            <Seo post={post} noindex />
             <Header post={post} small />
             <Box as="main" sx={{ color: 'text' }}>
                 <Container

@@ -2,6 +2,7 @@ import { Badge } from 'theme-ui';
 import { posts } from '../content'
 import { useEffect, useState } from "react";
 import Cookies from 'js-cookie'
+import Head from 'next/head'
 
 export default function Widget() {
     const [number, setNumber] = useState(0);
@@ -20,6 +21,9 @@ export default function Widget() {
 
     return (
         <>
+            <Head>
+                <meta name="robots" content="noindex,nofollow" />
+            </Head>
             <style jsx global>{`
                 html, body {
                     background: transparent !important;
