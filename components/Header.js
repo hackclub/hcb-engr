@@ -210,7 +210,7 @@ export default function Header({ post, small }) {
                       </Text>
                     )}
 
-                  <Heading mt={-1} mb={1} as="h2" sx={{
+                  <Heading mt={-1} mb={1} as="h1" sx={{
                     fontSize: 4,
                   }}>
                     {post.meta.title}
