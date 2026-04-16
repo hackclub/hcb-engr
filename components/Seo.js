@@ -73,6 +73,12 @@ export default function Seo({ post, title, description, path = '/', image, noind
         <title>{fullTitle}</title>
         <meta name="description" content={desc} />
         <link rel="canonical" href={url} />
+        <link
+          rel="alternate"
+          type="text/markdown"
+          href={`${url}.md`}
+          title={`${meta.title} (Markdown)`}
+        />
         {noindex && <meta name="robots" content="noindex,nofollow" />}
 
         <meta property="og:type" content="article" />

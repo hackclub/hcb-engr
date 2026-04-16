@@ -16,6 +16,8 @@ function buildLlmsTxt(allPosts) {
     '',
     `> Updates, improvements, engineering deep-dives, and announcements from HCB — the finance platform for nonprofits, hackathons, and student communities, built by Hack Club. Canonical site: ${SITE_URL}.`,
     '',
+    `Every post is available as both HTML (at /posts/<slug>) and plain markdown (at /posts/<slug>.md) — the links below point at the markdown variants, which are the preferred format for LLM ingestion.`,
+    '',
     '## Posts',
     ''
   ]
@@ -23,7 +25,7 @@ function buildLlmsTxt(allPosts) {
   for (const post of sorted) {
     const { meta } = post
     if (!meta?.slug || !meta?.title) continue
-    const url = `${SITE_URL}/posts/${meta.slug}`
+    const url = `${SITE_URL}/posts/${meta.slug}.md`
     const desc = meta.description ? `: ${meta.description}` : ''
     lines.push(`- [${meta.title}](${url})${desc}`)
   }
