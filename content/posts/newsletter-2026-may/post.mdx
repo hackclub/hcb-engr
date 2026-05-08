@@ -1,4 +1,5 @@
 import post, { Author, Preview } from '@/components/Post'
+import BlogPostLink from '@/components/BlogPostLink'
 import PullRequestLink from '@/components/PullRequestLink'
 
 export default post({
@@ -10,24 +11,35 @@ export default post({
 })
 
 <Preview>
-blah blah
+HCB Team takes on FIRST Worlds and more! Read this month's newsletter to find out what's new!
 </Preview>
 
-blah blah into
+# FIRST Worlds
+
+The HCB team just got back from the FIRST Robotics Championship in Houston a few days ago and it was a blast! We had a great time connecting with teams there and sharing more about what we do!
+<img src="https://cdn.hackclub.com/019dfe67-0999-7f5c-8ced-63da95a5b143/image.png" />
+
+# Changelog
 
 ## Features
 
-### big feature #1
+### ↕️ Sort your invoices
 
-blah blah (gary will write this)
+- Your invoices page just got a lot easier to scan. You can now sort invoices by clicking the table headers. <BlogPostLink slug="sort-your-invoices" />
 
-<Author id="manu" />
+  <Author id="manu" />
 
-### big feature #1
+### 🔔 Toggle monthly donation and follower summary emails
 
-blah blah (gary will write this)
+- You can now toggle whether you receive monthly donation and follower summary emails from your notification settings. <BlogPostLink slug="summary-notification-settings" />
 
-<Author id="samuel" />
+  <Author id="luke" />
+
+### 🔔 Get notified when important settings change
+
+- HCB will now send an email to all team members of an organization when transparency mode or monthly announcements are enabled or disabled. We hope this helps you keep your team in the loop! <BlogPostLink slug="organization-settings-notifications" />
+
+  <Author id="samuel" />
 
 ## Small changes
 
