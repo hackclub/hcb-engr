@@ -43,11 +43,11 @@ The HCB team just got back from the FIRST Robotics Championship in Houston a few
 
 ## Small changes
 
-- Generate and disable TOTP buttons now appear as buttons and not plain text. <PullRequestLink number="13381" />
+- All items on the command bar now match the icons and order of the items on the left-side navigation. <PullRequestLink number="13265" />
 
   <Author id="luke" />
 
-- All items on the command bar now match the icons and order of the items on the left-side navigation. <PullRequestLink number="13265" />
+- Generate and disable TOTP buttons now appear as buttons and not plain text. <PullRequestLink number="13381" />
 
   <Author id="luke" />
 
@@ -59,11 +59,20 @@ The HCB team just got back from the FIRST Robotics Championship in Houston a few
 
   <Author id="samuel" />
 
+- The team member invite modal now specifies that members can view transactions and finances. <PullRequestLink number="13522" />
+
+  <Author id="manu" />
+
 - The application review page is now clearer about why an application may not be ready to submit. <PullRequestLink number="13542" />
 
   <Author id="samuel" />
 
 ## Bugfixes
+
+- Pressing "Sign out everywhere else" now only updates currently signed in sessions.
+  Before it would incorrectly update the timestamp on already expired sessions. <PullRequestLink number="13375" />
+
+  <Author id="luke" />
 
 - Donations one-pager is now hidden if there are any regular donations or recurring donations.
   Previously if there were only recurring donations you would be unable to view them. <PullRequestLink number="13384" />
@@ -75,14 +84,13 @@ The HCB team just got back from the FIRST Robotics Championship in Houston a few
 
   <Author id="luke" />
 
-- Pressing "Sign out everywhere else" now only updates currently signed in sessions.
-  Before it would incorrectly update the timestamp on already expired sessions. <PullRequestLink number="13375" />
-
-  <Author id="luke" />
-
 - The donation goal reached and invite accepted emails are now clearer about who can create an announcement. <PullRequestLink number="13444" />
 
   <Author id="samuel" />
+
+- Contrast when hovering over orange colored buttons in dark mode is now fixed. <PullRequestLink number="13523" />
+
+  <Author id="manu" />
 
 - If your applications have all been archived, HCB will now redirect you to the new application page instead of an archived application. <PullRequestLink number="13536" />
 
