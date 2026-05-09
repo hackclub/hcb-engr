@@ -11,13 +11,13 @@ export default post({
 })
 
 <Preview>
-The HCB Newsletter is back and better than ever before! In this month's edition, read about the HCB team's presence at FIRST Worlds and all of the features and fixes from the past month. Click the text in the bottom right to learn more!
+The HCB Newsletter is back and better than ever! In this month's edition, read about the HCB team's presence at FIRST Worlds and all the features and fixes from the past month. Click the text in the bottom right to learn more!
 <img src="https://cdn.hackclub.com/019dfe67-0999-7f5c-8ced-63da95a5b143/image.png" />
 </Preview>
 
 # FIRST Worlds
 
-The HCB team just got back from the FIRST Robotics Championship in Houston a few days ago, and it was a blast! We had a great time connecting with teams there and sharing more about what we do! For context, HCB supports nearly 2,000 FIRST teams with the number growing by the day.
+The HCB team just got back from the FIRST Robotics Championship in Houston a few days ago, and it was a blast! We had a great time connecting with teams and sharing more about what we do. For context, HCB supports nearly 2,000 FIRST teams, with the number growing by the day.
 <img src="https://cdn.hackclub.com/019dfe67-0999-7f5c-8ced-63da95a5b143/image.png" />
 
 # Changelog
@@ -32,7 +32,7 @@ Your invoices page just got a lot easier to scan. You can now sort invoices by c
 
 ### 🔔 Toggle monthly donation and follower summary emails
 
-You can now toggle whether you receive monthly donation and follower summary emails from your notification settings. <BlogPostLink slug="summary-notification-settings" />
+From your notification settings, you can now toggle whether you receive monthly donation and follower summary emails. <BlogPostLink slug="summary-notification-settings" />
 
 <Author id="luke" />
 
@@ -48,7 +48,7 @@ HCB will now send an email to all team members of an organization when transpare
 
   <Author id="luke" />
 
-- Generate and disable TOTP buttons now appear as buttons and not plain text. <PullRequestLink number="13381" />
+- The "Generate" and "Disable TOTP" actions now appear as buttons instead of plain text. <PullRequestLink number="13381" />
 
   <Author id="luke" />
 
@@ -74,13 +74,13 @@ HCB will now send an email to all team members of an organization when transpare
 
 ## Bugfixes
 
-- Pressing "Sign out everywhere else" now only updates currently signed in sessions.
-  Before, it would incorrectly update the timestamp on already expired sessions. <PullRequestLink number="13375" />
+- Pressing "Sign out everywhere else" now only updates currently signed-in sessions.
+  Previously, it would incorrectly update the timestamp on already-expired sessions. <PullRequestLink number="13375" />
 
   <Author id="luke" />
 
-- Donations one-pager is now hidden if there are any regular donations or recurring donations.
-  Previously, if there were only recurring donations you would be unable to view them. <PullRequestLink number="13384" />
+- The donations one-pager is now hidden whenever any donations exist, one-time or recurring.
+  Previously, if you only had recurring donations, the one-pager would still appear and you couldn't view them. <PullRequestLink number="13384" />
 
   <Author id="luke" />
 
@@ -93,11 +93,11 @@ HCB will now send an email to all team members of an organization when transpare
 
   <Author id="samuel" />
 
-- Contrast when hovering over orange colored buttons in dark mode is now fixed. <PullRequestLink number="13523" />
+- Hover contrast on orange buttons in dark mode is now fixed. <PullRequestLink number="13523" />
 
   <Author id="manu" />
 
-- If your applications have all been archived, HCB will now redirect you to the new application page instead of an archived application. <PullRequestLink number="13536" />
+- If all of your applications have been archived, HCB will now redirect you to the new application page instead of an archived one. <PullRequestLink number="13536" />
 
   <Author id="samuel" />
 
@@ -105,4 +105,5 @@ HCB will now send an email to all team members of an organization when transpare
 This wraps up our updates for this month. Be sure to check back next month for the June edition! If you ever have any ideas on how we can improve HCB, I'd love to hear them! Feel free to reach out at hcb@hackclub.com.
 
 All the best,
+
 Gary & the HCB Team
