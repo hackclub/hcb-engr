@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Box, Container, Heading, Image, Link } from 'theme-ui'
+import { Box, Container, Heading, Image, Link, Text } from 'theme-ui'
 
 export default function Footer() {
   const router = useRouter()
@@ -56,6 +56,24 @@ export default function Footer() {
           </Box>
         </Box>
       </Container>
+
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+          gap: 3,
+          py: 3,
+          backgroundColor: 'whitesmoke',
+          width: '100%'
+        }}
+      >
+        <Text sx={{ opacity: 0.5 }}>
+          HCB Visa® Commercial cards are powered by Stripe and issued by Celtic
+          Bank.
+        </Text>
+      </Box>
     </Box>
   )
 }
