@@ -65,11 +65,11 @@ export default function Footer() {
           flexDirection: 'row',
           gap: 3,
           py: 3,
-          backgroundColor: 'whitesmoke',
+          bg: 'sunken',
           width: '100%'
         }}
       >
-        <Text sx={{ opacity: 0.5 }}>
+        <Text sx={{ color: 'muted' }}>
           HCB Visa® Commercial cards are powered by Stripe and issued by Celtic
           Bank.
         </Text>
