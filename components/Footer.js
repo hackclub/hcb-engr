@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Box, Container, Heading, Image, Link, Text } from 'theme-ui'
+import { Box, Container, Heading, Link, Text } from 'theme-ui'
 
 export default function Footer() {
   const router = useRouter()
