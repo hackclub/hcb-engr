@@ -65,8 +65,10 @@ export default function Footer() {
           flexDirection: 'row',
           gap: 3,
           py: 3,
+          px: 3,
           bg: 'sunken',
-          width: '100%'
+          width: '100%',
+          textAlign: 'center'
         }}
       >
         <Text sx={{ color: 'muted' }}>
