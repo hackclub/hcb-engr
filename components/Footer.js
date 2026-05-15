@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router'
-import { Box, Container, Heading, Link, Text } from 'theme-ui'
+import { Box, Container, Heading, Link, Text, useColorMode } from 'theme-ui'
 
 export default function Footer() {
   const router = useRouter()
+  const [colorMode, setColorMode] = useColorMode()
 
   return (
     <Box as="footer" sx={{ bg: 'sheet', color: 'text' }}>
@@ -66,12 +67,13 @@ export default function Footer() {
           gap: 3,
           py: 3,
           px: 3,
-          bg: 'sunken',
+          borderTop: '1px solid',
+          borderTopColor: colorMode == 'light' ? 'border' : 'slate',
           width: '100%',
           textAlign: 'center'
         }}
       >
-        <Text sx={{ color: 'muted' }}>
+        <Text sx={{ color: colorMode == 'light' ? 'text' : 'smoke' }}>
           HCB Visa® Commercial cards are powered by Stripe and issued by Celtic
           Bank.
         </Text>
