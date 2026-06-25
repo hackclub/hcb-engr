@@ -122,6 +122,7 @@ export function PostTags({ tags, category, filterOnClick }) {
         {tags.includes('power-users') && <Tag filterOnClick={filterOnClick}>Power Users</Tag>}
         {tags.includes('announcements') && <Tag filterOnClick={filterOnClick}>Announcements</Tag>}
         {tags.includes('mobile') && <Tag filterOnClick={filterOnClick}>Mobile</Tag>}
+        {tags.includes('applications') && <Tag filterOnClick={filterOnClick}>Applications</Tag>}
       </Box>
     </>
   )
