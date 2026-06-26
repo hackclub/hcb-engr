@@ -18,7 +18,7 @@ import { useEffect, useState } from 'react'
 import { DisplayProvider } from '@/lib/display'
 import { PostTags } from '@/components/Post'
 import { useQueryParam, StringParam } from 'use-query-params';
-import Head from 'next/head'
+import Seo from '@/components/Seo'
 import Cookies from "js-cookie"
 
 function PostPreview({ post }) {
@@ -43,14 +43,8 @@ export default function Home() {
 
   return (
     <>
+      <Seo path="/" />
       <Header />
-      <Head>
-        <title>HCB Blog</title>
-        <meta
-          property="og:image"
-          content="https://bank.engineering/og-v1.png"
-        />
-      </Head>
 
 
       <Box as="main" sx={{ color: 'text' }} className="post-list">

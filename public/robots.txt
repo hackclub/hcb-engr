@@ -1,0 +1,45 @@
+# robots.txt for blog.hcb.hackclub.com
+# See: https://www.rfc-editor.org/rfc/rfc9309.html
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /embed
+Disallow: /preview/
+Disallow: /widget
+Disallow: /dev/
+
+# LLM / AI crawlers — explicitly allowed so the HCB Blog shows up
+# in LLM-powered search and answer tools.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://blog.hcb.hackclub.com/sitemap.xml
