@@ -1,6 +1,6 @@
 import post from '@/components/Post';
 export default post({
-  title: "✉️ Stop checks that have been mailed",
+  title: "✉️ Stop payments made via mailed checks",
   slug: "stop-checks",
   category: "improvement",
   tags: ["transfers"],
@@ -8,7 +8,8 @@ export default post({
   date: new Date("2026-06-26"),
 });
 
-Checks can now be stopped even after they have been mailed by our partner bank. Previously, you were only able to abort a check if it had not yet mailed.
-The check may still be delivered but will not be depositable and can be discared by the recipient
+Payments made via mailed checks can now be stopped even after they have been shipped. The recipient may still receive the check in the mail, but it will no longer be valid, can not be deposited, and should be discarded by the recipient.
+
+You may stop a check any time before it is deposited. Checks are only valid for 180 days.
 
 <img src="https://cdn.hackclub.com/019f043f-3ee7-72b3-a28d-dedf17acec95/image.png" />
