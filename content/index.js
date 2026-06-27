@@ -81,8 +81,9 @@ const posts = Object.entries(rawPosts).map(
                 background: colorMode == "dark" ? theme.colors.darkless : theme.colors.slate,
                 borderRadius: "6px",
                 padding: "12px",
-                width: "100%",
-                overflowX: 'scroll',
+                maxWidth: "100%",
+                overflowX: 'auto',
+                boxSizing: 'border-box',
                 ...props.style
               }}>
                 <Text sx={{

@@ -5,3 +5,4 @@ node_modules
 .env
 .posts-cache.js
 headway.json
+package-lock.json
