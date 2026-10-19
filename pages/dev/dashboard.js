@@ -10,6 +10,7 @@ export default function Dashboard() {
         <>
             <Head>
                 <title>Dashboard</title>
+                <meta name="robots" content="noindex,nofollow" />
             </Head>
             <Header />
             <Box as="main" sx={{ color: 'text' }}>

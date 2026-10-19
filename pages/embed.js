@@ -8,7 +8,7 @@ import {
 } from 'theme-ui'
 import { useEffect } from 'react'
 import { DisplayProvider } from '@/lib/display'
-import Head from 'next/head'
+import Seo from '@/components/Seo'
 import Cookies from "js-cookie"
 import { useQueryParam, StringParam } from 'use-query-params';
 
@@ -39,13 +39,7 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>HCB Blog</title>
-        <meta
-          property="og:image"
-          content="https://bank.engineering/og-v1.png"
-        />
-      </Head>
+      <Seo path="/embed" noindex />
 
 
       <Box as="main" sx={{ color: 'text' }} className="post-list">
